@@ -16,94 +16,13 @@ namespace ContourPlateBridge
 
             if (teklaModel.GetConnectionStatus())
             {
-                //Read in Width and length from CSV file
-                // Put 20 plates in 1 row. Use a space of 300 between plates.
-                // Name into the name field
-
-                double aWidth = 470;
-                double bLength = 570;
-                string name = "B81-P09-BER-01";
-                string profile = "PL32";
-
-                    // we're going counter clock wise
-                ContourPoint p1 = new ContourPoint(new Point(0, 0, 0), new Chamfer(0,0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-                p1.Chamfer.DZ1 = -12;
-                
-                ContourPoint p2 = new ContourPoint(new Point(aWidth, 0, 0), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-                p2.Chamfer.DZ1 = -6;
-
-                ContourPoint p3 = new ContourPoint(new Point(aWidth, bLength, 0), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-                p3.Chamfer.DZ1 = 0;
-
-                ContourPoint p4 = new ContourPoint(new Point(0, bLength, 0), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-                p4.Chamfer.DZ1 = -6;
-                
-                ContourPlate contourPlate = new ContourPlate();
-                contourPlate.AddContourPoint(p1);
-                contourPlate.AddContourPoint(p2);
-                contourPlate.AddContourPoint(p3);
-                contourPlate.AddContourPoint(p4);
-
-                contourPlate.Finish = "HDG";
-                contourPlate.Profile.ProfileString = profile;
-                contourPlate.Material.MaterialString = "250";
-                contourPlate.Name = name;
-                contourPlate.Position.Depth = Position.DepthEnum.FRONT;
-                contourPlate.Insert();
-
-                insertBolt(contourPlate);                
+                SmartContourPlate contourPlate = new SmartContourPlate(0,0);
+                contourPlate.addContourPlate();
             }
 
             teklaModel.CommitChanges();
         }
 
-        private static void insertBolt(ContourPlate contourPlate)
-        {
-            BoltArray boltArray = new BoltArray();
-
-            boltArray.PartToBeBolted = contourPlate;
-            boltArray.PartToBoltTo = contourPlate;
-
-            boltArray.FirstPosition = new Point(0, 250, 0);
-            boltArray.SecondPosition = new Point(100, 250, 0);
-
-            boltArray.BoltSize = 16;
-            boltArray.Tolerance = 3.00;
-            boltArray.BoltStandard = "8.8S";
-            boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
-            boltArray.CutLength = 105;
-
-            boltArray.Length = 100;
-            boltArray.ExtraLength = 15;
-            boltArray.ThreadInMaterial = BoltGroup.BoltThreadInMaterialEnum.THREAD_IN_MATERIAL_NO;
-
-            boltArray.Position.Depth = Position.DepthEnum.MIDDLE;
-            boltArray.Position.Plane = Position.PlaneEnum.MIDDLE;
-            boltArray.Position.Rotation = Position.RotationEnum.FRONT;
-
-            boltArray.Bolt = true;
-            boltArray.Washer1 = true;
-            boltArray.Washer2 = true;
-            boltArray.Washer3 = true;
-            boltArray.Nut1 = true;
-            boltArray.Nut2 = true;
-
-            boltArray.Hole1 = true;
-            boltArray.Hole2 = true;
-            boltArray.Hole3 = true;
-            boltArray.Hole4 = true;
-            boltArray.Hole5 = true;
-
-            boltArray.AddBoltDistX(100);
-            boltArray.AddBoltDistX(90);
-            boltArray.AddBoltDistX(80);
-
-            boltArray.AddBoltDistY(70);
-            boltArray.AddBoltDistY(60);
-            boltArray.AddBoltDistY(50);
-
-            if (!boltArray.Insert())
-                Console.WriteLine("BoltArray Insert failed!");
-        }
+        
     }
 }
