@@ -23,6 +23,7 @@ namespace ContourPlateBridge
                 double aWidth = 470;
                 double bLength = 570;
                 string name = "B81-P09-BER-01";
+                string profile = "PL32";
 
                     // we're going counter clock wise
                 ContourPoint p1 = new ContourPoint(new Point(0, 0, 0), new Chamfer(0,0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
@@ -43,8 +44,8 @@ namespace ContourPlateBridge
                 contourPlate.AddContourPoint(p3);
                 contourPlate.AddContourPoint(p4);
 
-                contourPlate.Finish = "FOO";
-                contourPlate.Profile.ProfileString = "PL32";
+                contourPlate.Finish = "HDG";
+                contourPlate.Profile.ProfileString = profile;
                 contourPlate.Material.MaterialString = "250";
                 contourPlate.Name = name;
                 contourPlate.Position.Depth = Position.DepthEnum.FRONT;
