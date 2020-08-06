@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D6ABBDA1-8A59-4A9A-B433-FAF25B3C91AA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ContourPlateBridge</RootNamespace>
+    <AssemblyName>ContourPlateBridge</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Akit5, Version=5.4.0.0, Culture=neutral, PublicKeyToken=a70cba4ef557ee03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Akit5.dll</HintPath>
+    </Reference>
+    <Reference Include="BSE.Windows.Forms">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\BSE.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DlhSoft.DataControlLibrary">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\DlhSoft.DataControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="DlhSoft.DataFramework">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\DlhSoft.DataFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="DlhSoft.ProjectDataControlLibrary">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\DlhSoft.ProjectDataControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelPlugin">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\ExcelPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="FlatBarPlugin">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\FlatBarPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Excel">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.Office">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Interop.Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.VBIDE">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Interop.VBIDE.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MacroSelector">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\MacroSelector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="PowerCollections">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\PowerCollections.dll</HintPath>
+    </Reference>
+    <Reference Include="Sandbox">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Sandbox.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tekla.Application.Library, Version=19.1.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Application.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.BIM.DirectManipulation">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.BIM.DirectManipulation.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.BIM.Geometry">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.BIM.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.BIM.Internal">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.BIM.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.BIM.Utilities">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.BIM.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Common.Geometry">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Common.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Common.Geometry.Primitives">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Common.Geometry.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Common.Geometry.Topology">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Common.Geometry.Topology.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures, Version=19.1.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Analysis, Version=19.1.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Analysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Catalogs, Version=19.1.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Catalogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.CustomPropertyPlugin">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.CustomPropertyPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Datatype, Version=19.1.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Datatype.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Dialog, Version=19.1.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Dialog.Data">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Dialog.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.DirectManipulation">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.DirectManipulation.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.DirectManipulation.Debug">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.DirectManipulation.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Drawing, Version=19.1.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.DrawingPresentationModel">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.DrawingPresentationModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.DrawingPresentationModelInterface">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.DrawingPresentationModelInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.DrawingPresentationPluginInterface">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.DrawingPresentationPluginInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.ExceptionHandler">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.ExceptionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Geometry3d.Compatibility">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Geometry3d.Compatibility.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Model, Version=19.1.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.ObjectDimensioningModel">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.ObjectDimensioningModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.ObjectDimensioningPlugin">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.ObjectDimensioningPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Plugins">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.SiteManager">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Structures.SiteManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.IfcDatabaseTypes, Version=1.13.0.0, Culture=neutral, PublicKeyToken=a70cba4ef557ee03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.IfcDatabaseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.IfcLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=a70cba4ef557ee03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.IfcLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.IfcTools, Version=1.13.0.0, Culture=neutral, PublicKeyToken=a70cba4ef557ee03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.IfcTools.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.ManagedIfcLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=a70cba4ef557ee03, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.ManagedIfcLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.MsgLib, Version=2.0.3.0, Culture=neutral, PublicKeyToken=a70cba4ef557ee03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.MsgLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.Rkit, Version=2.0.0.3, Culture=neutral, PublicKeyToken=a70cba4ef557ee03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.Rkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.Scripting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=a70cba4ef557ee03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.Scripting.Plugins">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.Scripting.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Technology.Tkit.ContentAttributes">
+      <HintPath>..\..\..\..\..\..\Program Files\Tekla Structures\19.1\nt\bin\plugins\Tekla.Technology.Tkit.ContentAttributes.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
