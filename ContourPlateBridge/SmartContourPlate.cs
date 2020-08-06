@@ -17,17 +17,22 @@ namespace ContourPlateBridge
         double aWidth = 470;
         double bLength = 570;
         string name = "B81-P09-BER-01";
-        string profile = "PL32";
+
+        int profile;
+        string profileString = "PL32";
 
         double t1 = -12;
         double t2 = -6;
         double t3 = 0;
         double t4 = -6;
 
-        public SmartContourPlate(double xOrigin, double yOrigin)
+        public SmartContourPlate(double xOrigin, double yOrigin, int profile = 32)
         {
             this.xOrigin = xOrigin;
             this.yOrigin = yOrigin;
+            this.profile = profile;
+            this.profileString = "PL" + profile;
+
         }
 
         public void addContourPlate()
@@ -56,7 +61,7 @@ namespace ContourPlateBridge
             contourPlate.AddContourPoint(p4);
 
             contourPlate.Finish = "HDG";
-            contourPlate.Profile.ProfileString = profile;
+            contourPlate.Profile.ProfileString = profileString;
             contourPlate.Material.MaterialString = "250";
             contourPlate.Name = name;
             contourPlate.Position.Depth = Position.DepthEnum.FRONT;
