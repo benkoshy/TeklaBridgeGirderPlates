@@ -62,6 +62,23 @@ namespace ContourPlateBridge
 
             insertVerticalBolts(contourPlate, verticalLeftBoltOrigin());
             insertVerticalBolts(contourPlate, verticalRighBoltOrigin());
+
+            insertColumn(origin());
+        }
+
+        private void insertColumn(Point basePoint)
+        {
+            double height = 50;
+
+            Point start = new Point(basePoint.X, basePoint.Y, 0);
+            Point end = new Point(basePoint.X, basePoint.Y, height);
+
+            // Create a beam instance
+            Beam column = new Beam(start, end);
+            column.Profile.ProfileString = "D10";
+
+            // Insert the beam in the model
+            column.Insert();
         }
 
         /// <summary>
