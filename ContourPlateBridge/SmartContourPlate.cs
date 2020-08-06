@@ -120,6 +120,13 @@ namespace ContourPlateBridge
             return bottomLeftT1();
         }
 
+        private Point flatPlateCentre()
+        {
+            double halfWidth = aWidth / 2;
+            double halfLength = bLength / 2;
+            return new Point(origin().X + halfWidth, origin().Y + halfLength, 0);
+        }
+
         private Point bottomRightT2()
         {
             return new Point(xOrigin + aWidth, yOrigin, 0);
