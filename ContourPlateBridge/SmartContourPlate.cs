@@ -19,6 +19,11 @@ namespace ContourPlateBridge
         string name = "B81-P09-BER-01";
         string profile = "PL32";
 
+        double t1 = -12;
+        double t2 = -6;
+        double t3 = 0;
+        double t4 = -6;
+
         public SmartContourPlate(double xOrigin, double yOrigin)
         {
             this.xOrigin = xOrigin;
@@ -33,16 +38,16 @@ namespace ContourPlateBridge
 
             // we're going counter clock wise
             ContourPoint p1 = new ContourPoint(origin(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p1.Chamfer.DZ1 = -12;
+            p1.Chamfer.DZ1 = t1;
 
             ContourPoint p2 = new ContourPoint(bottomRightT2(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p2.Chamfer.DZ1 = -6;
+            p2.Chamfer.DZ1 = t2;
 
             ContourPoint p3 = new ContourPoint(topRightT3(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p3.Chamfer.DZ1 = 0;
+            p3.Chamfer.DZ1 = t3;
 
             ContourPoint p4 = new ContourPoint(topLeftT4(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p4.Chamfer.DZ1 = -6;
+            p4.Chamfer.DZ1 = t4;
 
             ContourPlate contourPlate = new ContourPlate();
             contourPlate.AddContourPoint(p1);
@@ -64,6 +69,12 @@ namespace ContourPlateBridge
             insertVerticalBolts(contourPlate, verticalRighBoltOrigin());
 
             insertColumn(origin());
+        }
+
+        private void InsertColumnOnPlane()
+        {
+            Plane plane = new Plane();
+            // Matrix transformationMatrix = MatrixFactory.ToCoordinateSystem(myBeam.GetCoordinateSystem());
         }
 
         private void insertColumn(Point basePoint)
