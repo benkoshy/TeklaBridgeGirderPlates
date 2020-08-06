@@ -49,11 +49,61 @@ namespace ContourPlateBridge
                 contourPlate.Material.MaterialString = "250";
                 contourPlate.Name = name;
                 contourPlate.Position.Depth = Position.DepthEnum.FRONT;
-
                 contourPlate.Insert();
+
+                insertBolt(contourPlate);                
             }
 
             teklaModel.CommitChanges();
+        }
+
+        private static void insertBolt(ContourPlate contourPlate)
+        {
+            BoltArray boltArray = new BoltArray();
+
+            boltArray.PartToBeBolted = contourPlate;
+            boltArray.PartToBoltTo = contourPlate;
+
+            boltArray.FirstPosition = new Point(0, 250, 0);
+            boltArray.SecondPosition = new Point(100, 250, 0);
+
+            boltArray.BoltSize = 16;
+            boltArray.Tolerance = 3.00;
+            boltArray.BoltStandard = "8.8S";
+            boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
+            boltArray.CutLength = 105;
+
+            boltArray.Length = 100;
+            boltArray.ExtraLength = 15;
+            boltArray.ThreadInMaterial = BoltGroup.BoltThreadInMaterialEnum.THREAD_IN_MATERIAL_NO;
+
+            boltArray.Position.Depth = Position.DepthEnum.MIDDLE;
+            boltArray.Position.Plane = Position.PlaneEnum.MIDDLE;
+            boltArray.Position.Rotation = Position.RotationEnum.FRONT;
+
+            boltArray.Bolt = true;
+            boltArray.Washer1 = true;
+            boltArray.Washer2 = true;
+            boltArray.Washer3 = true;
+            boltArray.Nut1 = true;
+            boltArray.Nut2 = true;
+
+            boltArray.Hole1 = true;
+            boltArray.Hole2 = true;
+            boltArray.Hole3 = true;
+            boltArray.Hole4 = true;
+            boltArray.Hole5 = true;
+
+            boltArray.AddBoltDistX(100);
+            boltArray.AddBoltDistX(90);
+            boltArray.AddBoltDistX(80);
+
+            boltArray.AddBoltDistY(70);
+            boltArray.AddBoltDistY(60);
+            boltArray.AddBoltDistY(50);
+
+            if (!boltArray.Insert())
+                Console.WriteLine("BoltArray Insert failed!");
         }
     }
 }
