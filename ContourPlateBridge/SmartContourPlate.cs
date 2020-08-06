@@ -19,20 +19,24 @@ namespace ContourPlateBridge
         string name = "B81-P09-BER-01";
 
         int profile;
-        string profileString = "PL32";
+        string profileString;
 
         double t1 = -12;
         double t2 = -6;
         double t3 = 0;
         double t4 = -6;
 
-        public SmartContourPlate(double xOrigin, double yOrigin, int profile = 32)
+        public SmartContourPlate(double xOrigin, double yOrigin, int profile = 32, int t1 = 20, int t2 = 26, int t3 = 32, int t4 = 26)
         {
             this.xOrigin = xOrigin;
             this.yOrigin = yOrigin;
             this.profile = profile;
             this.profileString = "PL" + profile;
 
+            this.t1 = t1;
+            this.t2 = t2;
+            this.t3 = t3;
+            this.t4 = t4;
         }
 
         public void addContourPlate()
@@ -43,16 +47,16 @@ namespace ContourPlateBridge
 
             // we're going counter clock wise
             ContourPoint p1 = new ContourPoint(origin(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p1.Chamfer.DZ1 = t1;
+            p1.Chamfer.DZ1 =  modt1Negative();
 
             ContourPoint p2 = new ContourPoint(bottomRightT2(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p2.Chamfer.DZ1 = t2;
+            p2.Chamfer.DZ1 = modt2Negative();
 
             ContourPoint p3 = new ContourPoint(topRightT3(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p3.Chamfer.DZ1 = t3;
+            p3.Chamfer.DZ1 = modt3Negative();
 
             ContourPoint p4 = new ContourPoint(topLeftT4(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p4.Chamfer.DZ1 = t4;
+            p4.Chamfer.DZ1 = modt4Negative();
 
             ContourPlate contourPlate = new ContourPlate();
             contourPlate.AddContourPoint(p1);
@@ -75,6 +79,26 @@ namespace ContourPlateBridge
 
             // insertColumn(origin());
             InsertColumnOnPlane();
+        }
+
+        private double modt1Negative()
+        {
+            return -1 * (profile - t1);
+        }
+
+        private double modt2Negative()
+        {
+            return -1 * (profile - t2);
+        }
+
+        private double modt3Negative()
+        {
+            return -1 * (profile - t3);
+        }
+
+        private double modt4Negative()
+        {
+            return -1 * (profile - t4);
         }
 
         private void InsertColumnOnPlane()
