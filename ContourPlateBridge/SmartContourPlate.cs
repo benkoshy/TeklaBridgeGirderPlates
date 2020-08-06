@@ -91,16 +91,17 @@ namespace ContourPlateBridge
 
         private void insertBolt(ContourPlate contourPlate)
         {
+            
             BoltArray boltArray = new BoltArray();
 
             boltArray.PartToBeBolted = contourPlate;
-            boltArray.PartToBoltTo = contourPlate;
+            boltArray.PartToBoltTo = contourPlate;            
 
-            boltArray.FirstPosition = new Point(0, 250, 0);
-            boltArray.SecondPosition = new Point(100, 250, 0);
+            boltArray.FirstPosition = boltOrigin();
+            boltArray.SecondPosition = boltOrigin() + new Vector(100,0,0);
 
             boltArray.BoltSize = 16;
-            boltArray.Tolerance = 3.00;
+            boltArray.Tolerance = 2.00;
             boltArray.BoltStandard = "8.8S";
             boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
             boltArray.CutLength = 105;
@@ -125,17 +126,24 @@ namespace ContourPlateBridge
             boltArray.Hole3 = true;
             boltArray.Hole4 = true;
             boltArray.Hole5 = true;
+            
+            boltArray.AddBoltDistX(85);
+            boltArray.AddBoltDistX(85);            
 
-            boltArray.AddBoltDistX(100);
-            boltArray.AddBoltDistX(90);
-            boltArray.AddBoltDistX(80);
 
-            boltArray.AddBoltDistY(70);
-            boltArray.AddBoltDistY(60);
-            boltArray.AddBoltDistY(50);
+            boltArray.AddBoltDistY(0);                   
 
             if (!boltArray.Insert())
                 Console.WriteLine("BoltArray Insert failed!");
         }
+
+        private Point boltOrigin()
+        {
+            double xBoltOrigin = (origin().X + aWidth / 2) - 85;
+            double yboltOrigin = origin().Y + 32;
+
+            return new Point(xBoltOrigin, yboltOrigin, 0);
+        }
     }    
 }
+
