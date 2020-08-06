@@ -68,21 +68,35 @@ namespace ContourPlateBridge
             insertVerticalBolts(contourPlate, verticalLeftBoltOrigin());
             insertVerticalBolts(contourPlate, verticalRighBoltOrigin());
 
-            insertColumn(origin());
+            // insertColumn(origin());
+            InsertColumnOnPlane();
         }
 
         private void InsertColumnOnPlane()
         {
-            Plane plane = new Plane();
-            // Matrix transformationMatrix = MatrixFactory.ToCoordinateSystem(myBeam.GetCoordinateSystem());
+            CoordinateSystem cs = new CoordinateSystem();
+            cs.Origin = t1Point();
+            cs.AxisX = getVector(t2Point(), t1Point());
+            cs.AxisY = getVector(t4Point(), t1Point());            
+            
+            Matrix transformationMatrix = MatrixFactory.ToCoordinateSystem(cs);
+
+            Point topOrigin = transformationMatrix.Transform(origin());
+
+            insertColumn(topOrigin);
+        }
+
+        private Vector getVector(Point finalPoint, Point startingPoing)
+        {
+            return new Vector(finalPoint.X - startingPoing.X, finalPoint.Y - startingPoing.Y, finalPoint.Z - startingPoing.Z);
         }
 
         private void insertColumn(Point basePoint)
         {
             double height = 50;
 
-            Point start = new Point(basePoint.X, basePoint.Y, 0);
-            Point end = new Point(basePoint.X, basePoint.Y, height);
+            Point start = new Point(basePoint.X, basePoint.Y, basePoint.Z);
+            Point end = new Point(basePoint.X, basePoint.Y, basePoint.Z + height);
 
             // Create a beam instance
             Beam column = new Beam(start, end);
@@ -243,6 +257,26 @@ namespace ContourPlateBridge
             return new Point(xBoltOrigin, yboltOrigin, 0);
         }
 
+
+        private Point t1Point()
+        {
+            return new Point(bottomLeftT1().X, bottomLeftT1().Y, t1);
+        }
+
+        private Point t2Point()
+        {
+            return new Point(bottomRightT2().X, bottomRightT2().Y, t2);
+        }
+
+        private Point t3Point()
+        {
+            return new Point(topRightT3().X, topRightT3().Y, t3);
+        }
+
+        private Point t4Point()
+        {
+            return new Point(topLeftT4().X, topLeftT4().Y, t4);
+        }
     }
 }
 
