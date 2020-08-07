@@ -102,8 +102,18 @@ namespace ContourPlateBridge
         }
 
         private void InsertColumnOnPlane()
-        {            
-            insertColumn(origin());
+        {
+            Point t1_and_t3_midpoint = get_t1_t3_diagonal_point();
+            insertColumn(t1_and_t3_midpoint);
+        }
+
+        private Point get_t1_t3_diagonal_point()
+        {
+            Vector diagonal = getVector(t3Point(), t1Point());            
+            Vector halfDiagonal = diagonal * 0.5;
+
+            Point midpoint = new Point(t1Point().X + halfDiagonal.X, t1Point().Y + halfDiagonal.Y, t1Point().Z + halfDiagonal.Z);
+            return midpoint;
         }
 
         private Vector getVector(Point finalPoint, Point startingPoing)
