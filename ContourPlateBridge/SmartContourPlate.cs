@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Tekla.Structures.Geometry3d;
 using Tekla.Structures.Model;
+using Tekla.Structures.Model.UI;
 
 namespace ContourPlateBridge
 {
@@ -26,7 +27,7 @@ namespace ContourPlateBridge
         double t3 = 0;
         double t4 = -6;
 
-        public SmartContourPlate(double xOrigin, double yOrigin, int profile = 32, int t1 = 20, int t2 = 26, int t3 = 32, int t4 = 26)
+        public SmartContourPlate(double xOrigin, double yOrigin, int profile = 32, int t1 = 20, int t2 = 20, int t3 = 80, int t4 = 80)
         {
             this.xOrigin = xOrigin;
             this.yOrigin = yOrigin;
@@ -117,6 +118,29 @@ namespace ContourPlateBridge
             Point intersectionPoint = Intersection.LineToPlane(line, plane);
 
             insertColumn(intersectionPoint);
+
+            checkIfPlanar();
+        }
+
+        private void checkIfPlanar()
+        {
+            Vector txAxis = getVector(t2Point(), t1Point());
+            Vector tYAxis = getVector(t4Point(), t1Point());
+            Vector zTVector = txAxis.Cross(tYAxis);
+
+            Line line = new Line(t3Point(), zTVector);
+            GeometricPlane plane = new GeometricPlane(t1Point(), txAxis, tYAxis);
+
+            Point intersectionPoint = Intersection.LineToPlane(line, plane);
+
+            // get the distance between the intersection point and t4
+            double distanceBetweenPoints = Distance.PointToPoint(intersectionPoint, t3Point());
+
+            if (Math.Abs( distanceBetweenPoints) > 0.2)
+            {
+                GraphicsDrawer drawer = new GraphicsDrawer();
+                drawer.DrawText(t3Point(), "t3 point is not planar", new Color(1.0, 0.5, 0.0));
+            }
         }
 
         private Point get_t1_t3_diagonal_point()
