@@ -16,21 +16,21 @@ namespace ContourPlateBridge
         private readonly double xOrigin;
         private readonly double yOrigin;
 
-        double aWidth = 470;
-        double bLength = 570;
-        string name = "B81-P09-BER-01";
+        double aWidth; 
+        double bLength;
+        string name;
 
         int profile;
         string profileString;
 
-        double t1 = -12;
-        double t2 = -6;
-        double t3 = 0;
-        double t4 = -6;
+        double t1;
+        double t2;
+        double t3;
+        double t4;
 
         ContourPlate contourPlate;
 
-        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile = 32, int t1 = 20, int t2 = 20, int t3 = 80, int t4 = 80)
+        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, int t1, int t2, int t3, int t4, double aWidth, double bLength, string bearingMark)
         {
             this.model = model;
             this.xOrigin = xOrigin;
@@ -42,7 +42,9 @@ namespace ContourPlateBridge
             this.t2 = t2;
             this.t3 = t3;
             this.t4 = t4;
-
+            this.aWidth = aWidth;
+            this.bLength = bLength;
+            this.name = bearingMark;
             this.contourPlate = new ContourPlate();
         }
 

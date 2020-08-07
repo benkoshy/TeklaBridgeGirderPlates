@@ -27,7 +27,7 @@ namespace ContourPlateBridge
 
                     foreach (PlateData plate in plates)
                     {
-                        SmartContourPlate contourPlate = new SmartContourPlate(model, 0, 0, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4);
+                        SmartContourPlate contourPlate = new SmartContourPlate(model, 0, 0, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark);
                         contourPlate.addContourPlate();
                     }
                 }
