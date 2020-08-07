@@ -12,15 +12,15 @@ namespace ContourPlateBridge
     {
         static void Main(string[] args)
         {
-            Model teklaModel = new Model();
+            Model model = new Model();
 
-            if (teklaModel.GetConnectionStatus())
+            if (model.GetConnectionStatus())
             {
-                SmartContourPlate contourPlate = new SmartContourPlate(0,0);
+                SmartContourPlate contourPlate = new SmartContourPlate(model, 0,0);
                 contourPlate.addContourPlate();
             }
 
-            teklaModel.CommitChanges();
+            model.CommitChanges();
         }
 
         

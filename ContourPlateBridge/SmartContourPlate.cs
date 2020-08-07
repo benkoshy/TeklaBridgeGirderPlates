@@ -12,6 +12,7 @@ namespace ContourPlateBridge
 {
     class SmartContourPlate
     {
+        private readonly Model model;
         private readonly double xOrigin;
         private readonly double yOrigin;
 
@@ -27,8 +28,9 @@ namespace ContourPlateBridge
         double t3 = 0;
         double t4 = -6;
 
-        public SmartContourPlate(double xOrigin, double yOrigin, int profile = 32, int t1 = 20, int t2 = 20, int t3 = 80, int t4 = 80)
+        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile = 32, int t1 = 20, int t2 = 20, int t3 = 80, int t4 = 80)
         {
+            this.model = model;
             this.xOrigin = xOrigin;
             this.yOrigin = yOrigin;
             this.profile = profile;
@@ -77,8 +79,7 @@ namespace ContourPlateBridge
 
             insertVerticalBolts(contourPlate, verticalLeftBoltOrigin());
             insertVerticalBolts(contourPlate, verticalRighBoltOrigin());
-
-            // insertColumn(origin());
+            
             InsertColumnOnPlane();
         }
 
@@ -106,10 +107,10 @@ namespace ContourPlateBridge
         {
             Point t1_and_t3_midpoint = get_t1_t3_diagonal_point();
 
-            Vector txAxis = getVector(t2Point(), t1Point());
-            Vector tYAxis = getVector(t4Point(), t1Point());
+            Vector txAxis = getTXAxis();
+            Vector tYAxis = getTYAxis();
 
-            Vector zTVector = txAxis.Cross(tYAxis);
+            Vector zTVector = getTZAxis();
             Vector negativeZVector = zTVector * -1;
 
             Line line = new Line(t1_and_t3_midpoint, negativeZVector);
@@ -122,11 +123,18 @@ namespace ContourPlateBridge
             checkIfPlanar();
         }
 
+        private void insertFinalBoltArray(Point inclinedOrigin)
+        {
+            TransformationPlane currentPlane =  model.GetWorkPlaneHandler().GetCurrentTransformationPlane();
+                      
+
+        }
+
         private void checkIfPlanar()
         {
-            Vector txAxis = getVector(t2Point(), t1Point());
-            Vector tYAxis = getVector(t4Point(), t1Point());
-            Vector zTVector = txAxis.Cross(tYAxis);
+            Vector txAxis = getTXAxis();
+            Vector tYAxis = getTYAxis();
+            Vector zTVector = getTZAxis();
 
             Line line = new Line(t3Point(), zTVector);
             GeometricPlane plane = new GeometricPlane(t1Point(), txAxis, tYAxis);
@@ -136,11 +144,27 @@ namespace ContourPlateBridge
             // get the distance between the intersection point and t4
             double distanceBetweenPoints = Distance.PointToPoint(intersectionPoint, t3Point());
 
-            if (Math.Abs( distanceBetweenPoints) > 0.2)
+            if (Math.Abs(distanceBetweenPoints) > 0.2)
             {
                 GraphicsDrawer drawer = new GraphicsDrawer();
                 drawer.DrawText(t3Point(), "t3 point is not planar", new Color(1.0, 0.5, 0.0));
             }
+        }
+
+        private Vector getTZAxis()
+        {
+            return getTXAxis().Cross(getTYAxis());               
+                
+        }
+
+        private Vector getTYAxis()
+        {
+            return getVector(t4Point(), t1Point());
+        }
+
+        private Vector getTXAxis()
+        {
+            return getVector(t2Point(), t1Point());
         }
 
         private Point get_t1_t3_diagonal_point()
