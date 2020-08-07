@@ -104,7 +104,19 @@ namespace ContourPlateBridge
         private void InsertColumnOnPlane()
         {
             Point t1_and_t3_midpoint = get_t1_t3_diagonal_point();
-            insertColumn(t1_and_t3_midpoint);
+
+            Vector txAxis = getVector(t2Point(), t1Point());
+            Vector tYAxis = getVector(t4Point(), t1Point());
+
+            Vector zTVector = txAxis.Cross(tYAxis);
+            Vector negativeZVector = zTVector * -1;
+
+            Line line = new Line(t1_and_t3_midpoint, negativeZVector);
+            GeometricPlane plane = new GeometricPlane(new Point(0, 0, 0), new Vector(0, 0, 1));
+
+            Point intersectionPoint = Intersection.LineToPlane(line, plane);
+
+            insertColumn(intersectionPoint);
         }
 
         private Point get_t1_t3_diagonal_point()
