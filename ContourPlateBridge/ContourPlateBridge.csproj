@@ -238,6 +238,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartContourPlate.cs" />
+    <Compile Include="ToleranceReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

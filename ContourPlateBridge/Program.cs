@@ -18,6 +18,8 @@ namespace ContourPlateBridge
         {
             Model model = new Model();
 
+            List<ToleranceReport> _tolerances = new List<ToleranceReport>();
+
             if (model.GetConnectionStatus())
             {
                 using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\COMBINED B81-AND-B80- Bearing Schedules.csv"))
@@ -26,11 +28,7 @@ namespace ContourPlateBridge
                     var plates = csv.GetRecords<PlateData>();
 
                     int rowCount = 0;
-                    int columnCount = 0;
-
-                    //PlateData plate = plates.First();
-                    //SmartContourPlate contourPlate = new SmartContourPlate(model, 0, 0, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark);
-                    //contourPlate.addContourPlate();
+                    int columnCount = 0;                    
 
                     foreach (PlateData plate in plates)
                     {
@@ -47,7 +45,7 @@ namespace ContourPlateBridge
                             rowCount++;
                         }                        
 
-                        SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark);
+                        SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances);
                         contourPlate.addContourPlate();
                     }
                 }
@@ -56,6 +54,15 @@ namespace ContourPlateBridge
             model.CommitChanges();
 
             Console.ReadLine();
+
+            
+            using (var writer = new StreamWriter(@"C:\Users\Koshy\source\repos\ContourPlateBridge\ToleranceReport.csv"))
+            using (var csv = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
+            {
+                    csv.WriteRecords(_tolerances);
+            }
+            
+
         }
 
         

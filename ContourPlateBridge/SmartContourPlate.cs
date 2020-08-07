@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,7 @@ namespace ContourPlateBridge
         double aWidth; 
         double bLength;
         string name;
-
+        
         int profile;
         string profileString;
 
@@ -30,7 +32,9 @@ namespace ContourPlateBridge
 
         ContourPlate contourPlate;
 
-        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, int t1, int t2, int t3, int t4, double aWidth, double bLength, string bearingMark)
+        private List<ToleranceReport> _tolerances;
+
+        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, int t1, int t2, int t3, int t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances)
         {
             this.model = model;
             this.xOrigin = xOrigin;
@@ -45,8 +49,11 @@ namespace ContourPlateBridge
             this.aWidth = aWidth;
             this.bLength = bLength;
             this.name = bearingMark;
+
+            this._tolerances = _tolerances;
+            
             this.contourPlate = new ContourPlate();
-        }
+        }       
 
         public void addContourPlate()
         {
@@ -199,18 +206,20 @@ namespace ContourPlateBridge
             // get the distance between the intersection point and t4
             double distanceBetweenPoints = Distance.PointToPoint(intersectionPoint, t3Point());
 
-            if (Math.Abs(distanceBetweenPoints) > 0.2)
+            if (Math.Abs(distanceBetweenPoints) > 0.05)
             {
                 GraphicsDrawer drawer = new GraphicsDrawer();
                 drawer.DrawText(t3Point(), "t3 point is not planar", new Color(1.0, 0.5, 0.0));
 
                 Console.WriteLine("\n " + name + "T3 is out by: " + distanceBetweenPoints);
+
+                _tolerances.Add(new ToleranceReport() { ErrorString = name + " - T3 is out by: " + distanceBetweenPoints });
             }
             else
             {
                 Console.WriteLine("\n " + name + "T3 is out by: " + distanceBetweenPoints);
-            }
-        }
+            }            
+         }
 
         private Vector getTZAxis()
         {
