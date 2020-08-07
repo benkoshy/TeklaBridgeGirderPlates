@@ -28,6 +28,8 @@ namespace ContourPlateBridge
         double t3 = 0;
         double t4 = -6;
 
+        ContourPlate contourPlate;
+
         public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile = 32, int t1 = 20, int t2 = 20, int t3 = 80, int t4 = 80)
         {
             this.model = model;
@@ -40,6 +42,8 @@ namespace ContourPlateBridge
             this.t2 = t2;
             this.t3 = t3;
             this.t4 = t4;
+
+            this.contourPlate = new ContourPlate();
         }
 
         public void addContourPlate()
@@ -61,7 +65,7 @@ namespace ContourPlateBridge
             ContourPoint p4 = new ContourPoint(topLeftB4(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
             p4.Chamfer.DZ1 = modt4Negative();
 
-            ContourPlate contourPlate = new ContourPlate();
+            
             contourPlate.AddContourPoint(p1);
             contourPlate.AddContourPoint(p2);
             contourPlate.AddContourPoint(p3);
@@ -118,7 +122,7 @@ namespace ContourPlateBridge
 
             Point intersectionPoint = Intersection.LineToPlane(line, plane);
 
-            insertColumn(intersectionPoint);
+            insertFinalBoltArray(intersectionPoint);
 
             checkIfPlanar();
         }
@@ -126,7 +130,79 @@ namespace ContourPlateBridge
         private void insertFinalBoltArray(Point inclinedOrigin)
         {
             TransformationPlane currentPlane =  model.GetWorkPlaneHandler().GetCurrentTransformationPlane();
-                      
+
+            // get the new transformation plane
+            TransformationPlane newPlane = new TransformationPlane(inclinedOrigin, getTXAxis(), getTYAxis());
+            model.GetWorkPlaneHandler().SetCurrentTransformationPlane(newPlane);
+            
+            BoltArray boltArray = new BoltArray();
+
+            boltArray.PartToBeBolted = contourPlate;
+            boltArray.PartToBoltTo = contourPlate;
+
+            boltArray.FirstPosition =  new Point(0,0,0);
+            boltArray.SecondPosition = new Point(0, bLength / 2, 0);
+
+            boltArray.BoltSize = 16;
+            boltArray.Tolerance = 2.00;
+            boltArray.BoltStandard = "8.8S";
+            boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
+            boltArray.CutLength = 105;
+
+            boltArray.Length = 100;
+            boltArray.ExtraLength = 15;
+            boltArray.ThreadInMaterial = BoltGroup.BoltThreadInMaterialEnum.THREAD_IN_MATERIAL_NO;
+
+            boltArray.Position.Depth = Position.DepthEnum.MIDDLE;
+            boltArray.Position.Plane = Position.PlaneEnum.MIDDLE;
+            boltArray.Position.Rotation = Position.RotationEnum.FRONT;
+
+            boltArray.Bolt = true;
+            boltArray.Washer1 = true;
+            boltArray.Washer2 = true;
+            boltArray.Washer3 = true;
+            boltArray.Nut1 = true;
+            boltArray.Nut2 = true;
+
+            boltArray.Hole1 = true;
+            boltArray.Hole2 = true;
+            boltArray.Hole3 = true;
+            boltArray.Hole4 = true;
+            boltArray.Hole5 = true;
+
+            boltArray.StartPointOffset.Dx = -150;
+
+            boltArray.AddBoltDistX(300);
+            boltArray.AddBoltDistX(200);            
+
+            boltArray.AddBoltDistY(200);
+
+            if (!boltArray.Insert())
+                Console.WriteLine("BoltArray Insert failed!");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // revert back to the current plane
+            model.GetWorkPlaneHandler().SetCurrentTransformationPlane(currentPlane);
 
         }
 
