@@ -155,7 +155,7 @@ namespace ContourPlateBridge
 
             boltArray.Position.Depth = Position.DepthEnum.MIDDLE;
             boltArray.Position.Plane = Position.PlaneEnum.MIDDLE;
-            boltArray.Position.Rotation = Position.RotationEnum.FRONT;
+            boltArray.Position.Rotation = Position.RotationEnum.BACK;
 
             boltArray.Bolt = true;
             boltArray.Washer1 = true;
@@ -173,8 +173,7 @@ namespace ContourPlateBridge
             boltArray.StartPointOffset.Dx = -150;
 
             boltArray.AddBoltDistX(300);
-            boltArray.AddBoltDistX(200);            
-
+            
             boltArray.AddBoltDistY(200);
 
             if (!boltArray.Insert())
@@ -330,7 +329,7 @@ namespace ContourPlateBridge
 
             boltArray.Position.Depth = Position.DepthEnum.MIDDLE;
             boltArray.Position.Plane = Position.PlaneEnum.MIDDLE;
-            boltArray.Position.Rotation = Position.RotationEnum.FRONT;
+            boltArray.Position.Rotation = Position.RotationEnum.BACK;
 
             boltArray.Bolt = true;
             boltArray.Washer1 = true;
@@ -376,7 +375,7 @@ namespace ContourPlateBridge
 
             boltArray.Position.Depth = Position.DepthEnum.MIDDLE;
             boltArray.Position.Plane = Position.PlaneEnum.MIDDLE;
-            boltArray.Position.Rotation = Position.RotationEnum.FRONT;
+            boltArray.Position.Rotation = Position.RotationEnum.BACK;
 
             boltArray.Bolt = true;
             boltArray.Washer1 = true;
