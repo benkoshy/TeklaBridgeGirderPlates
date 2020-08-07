@@ -181,30 +181,8 @@ namespace ContourPlateBridge
             if (!boltArray.Insert())
                 Console.WriteLine("BoltArray Insert failed!");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             // revert back to the current plane
             model.GetWorkPlaneHandler().SetCurrentTransformationPlane(currentPlane);
-
         }
 
         private void checkIfPlanar()
@@ -225,6 +203,12 @@ namespace ContourPlateBridge
             {
                 GraphicsDrawer drawer = new GraphicsDrawer();
                 drawer.DrawText(t3Point(), "t3 point is not planar", new Color(1.0, 0.5, 0.0));
+
+                Console.WriteLine("\n " + name + "T3 is out by: " + distanceBetweenPoints);
+            }
+            else
+            {
+                Console.WriteLine("\n " + name + "T3 is out by: " + distanceBetweenPoints);
             }
         }
 

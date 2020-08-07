@@ -1,0 +1,314 @@
+I have attempted to reconcile whether the four points given: t1, t2, t3, t4, are co-planar.
+
+I have used t3 as a reference point, and the following are the results I have obtained. 
+
+Given a plane defined by t1, t2, and t4: how far out is t3 from the its expected value on the
+plane? Some values are out by up to 1 mm. 
+
+Please note, the calculated values of where the holes will be driled will be amplified by the plate thickness, 
+and will likely be out by huge margins. 
+
+I am unable to acheive the desired tolerances with the input given. Please
+advise.
+
+
+
+ B81-P11-BER-04T3 is out by: 0
+
+ B81-P11-BER-05T3 is out by: 0
+
+ B81-P11-BER-06T3 is out by: 0
+
+ B81-P11-BER-07T3 is out by: 0
+
+ B81-P11-BER-08T3 is out by: 0
+
+ B81-P11-BER-09T3 is out by: 0
+
+ B81-P11-BER-10T3 is out by: 0
+
+ B81-P10-BER-09T3 is out by: 0.998966609270499
+
+ B81-P31-BER-06T3 is out by: 3.5527136788005E-15
+
+ B81-P31-BER-18T3 is out by: 7.105427357601E-15
+
+ B81-P31-BER-19T3 is out by: 7.105427357601E-15
+
+ B81-P34-BER-15T3 is out by: 0.998923677529894
+
+ B81-P34-BER-16T3 is out by: 0.998923677529894
+
+ B81-P34-BER-17T3 is out by: 0.998923677529894
+
+ B81-P34-BER-18T3 is out by: 0.998923677529894
+
+ B81-P34-BER-19T3 is out by: 0.998923677529894
+
+ B81-P34-BER-20T3 is out by: 0.998923677529894
+
+ B81-P34-BER-21T3 is out by: 0.998923677529894
+
+ B81-P34-BER-22T3 is out by: 0.998923677529894
+
+ B81-P34-BER-24T3 is out by: 0.998849232347306
+
+ B81-P34-BER-25T3 is out by: 0.998849232347306
+
+ B81-P34-BER-26T3 is out by: 0.998849232347306
+
+ B81-P34-BER-27T3 is out by: 0.998849232347306
+
+ B81-P31-BER-07T3 is out by: 0.998063589430625
+
+ B81-P31-BER-20T3 is out by: 0
+
+ B81-P11-BER-11T3 is out by: 0
+
+ B81-P35-BER-02T3 is out by: 0.999016697837852
+
+ B81-P34-BER-03T3 is out by: 0.998647151898622
+
+ B81-P34-BER-04T3 is out by: 0.998702708325154
+
+ B81-P31-BER-08T3 is out by: 0.997930845617891
+
+ B81-P31-BER-21T3 is out by: 0.998703172583477
+
+ B81-P31-BER-22T3 is out by: 0
+
+ B81-P11-BER-12T3 is out by: 0
+
+ B81-P29-BER-01T3 is out by: 0
+
+ B81-P29-BER-02T3 is out by: 0
+
+ B81-P29-BER-03T3 is out by: 0
+
+ B81-P29-BER-04T3 is out by: 0
+
+ B81-P29-BER-05T3 is out by: 0
+
+ B81-P29-BER-06T3 is out by: 0
+
+ B81-P29-BER-07T3 is out by: 0
+
+ B81-P29-BER-08T3 is out by: 0
+
+ B81-P29-BER-09T3 is out by: 0
+
+ B81-P29-BER-10T3 is out by: 0
+
+ B81-P29-BER-11T3 is out by: 0
+
+ B81-P29-BER-12T3 is out by: 0
+
+ B81-P29-BER-13T3 is out by: 0
+
+ B81-P11-BER-13T3 is out by: 0.998605771633734
+
+ B81-P11-BER-14T3 is out by: 0
+
+ B81-P34-BER-01T3 is out by: 0
+
+ B81-P34-BER-02T3 is out by: 0
+
+ B81-P33-BER-14T3 is out by: 0
+
+ B81-P31-BER-09T3 is out by: 3.5527136788005E-15
+
+ B81-P31-BER-23T3 is out by: 0
+
+ B81-P31-BER-24T3 is out by: 0
+
+ B81-P31-BER-25T3 is out by: 0
+
+ B81-P31-BER-26T3 is out by: 0
+
+ B81-P14-BER-15T3 is out by: 0
+
+ B81-P14-BER-16T3 is out by: 0
+
+ B81-P14-BER-17T3 is out by: 0
+
+ B81-P14-BER-18T3 is out by: 0
+
+ B81-P14-BER-19T3 is out by: 0
+
+ B81-P14-BER-20T3 is out by: 0
+
+ B81-P14-BER-21T3 is out by: 0
+
+ B81-P14-BER-22T3 is out by: 0
+
+ B81-P14-BER-23T3 is out by: 0
+
+ B81-P11-BER-15T3 is out by: 0
+
+ B81-P35-BER-01T3 is out by: 0
+
+ B81-P33-BER-09T3 is out by: 0
+
+ B81-P33-BER-15T3 is out by: 0.998598947919025
+
+ B81-P33-BER-16T3 is out by: 0.998598947919025
+
+ B81-P33-BER-17T3 is out by: 0.998598947919016
+
+ B81-P33-BER-18T3 is out by: 0.998598947919016
+
+ B81-P33-BER-19T3 is out by: 0.998598947919016
+
+ B81-P33-BER-20T3 is out by: 0.998598947919016
+
+ B81-P33-BER-21T3 is out by: 0.998598947919035
+
+ B81-P33-BER-22T3 is out by: 0.998598947919035
+
+ B81-P33-BER-23T3 is out by: 0.998506548088031
+
+ B81-P33-BER-24T3 is out by: 0.998506548088031
+
+ B81-P33-BER-25T3 is out by: 0.998506548088031
+
+ B81-P33-BER-26T3 is out by: 0.998506548088031
+
+ B81-P30-BER-01T3 is out by: 0
+
+ B81-P30-BER-02T3 is out by: 0
+
+ B81-P14-BER-14T3 is out by: 0.998560174170858
+
+ B81-P11-BER-16T3 is out by: 0.998398466966722
+
+ B81-P11-BER-17T3 is out by: 0
+
+ B81-P32-BER-06T3 is out by: 0
+
+ B81-P30-BER-03T3 is out by: 0
+
+ B81-P30-BER-04T3 is out by: 0.998398466966689
+
+ B81-P11-BER-18T3 is out by: 0
+
+ B81-P11-BER-19T3 is out by: 0
+
+ B81-P33-BER-10T3 is out by: 7.105427357601E-15
+
+ B81-P33-BER-11T3 is out by: 7.105427357601E-15
+
+ B81-P33-BER-12T3 is out by: 7.105427357601E-15
+
+ B81-P33-BER-13T3 is out by: 7.105427357601E-15
+
+ B81-P30-BER-05T3 is out by: 0
+
+ B81-P13-BER-11T3 is out by: 0
+
+ B81-P13-BER-12T3 is out by: 0
+
+ B81-P13-BER-13T3 is out by: 0
+
+ B81-P13-BER-14T3 is out by: 0
+
+ B81-P13-BER-15T3 is out by: 0
+
+ B81-P13-BER-16T3 is out by: 0
+
+ B81-P13-BER-17T3 is out by: 0
+
+ B81-P13-BER-18T3 is out by: 0
+
+ B81-P13-BER-19T3 is out by: 0
+
+ B81-P13-BER-20T3 is out by: 0
+
+ B81-P12-BER-11T3 is out by: 0
+
+ B81-P12-BER-12T3 is out by: 0
+
+ B81-P12-BER-13T3 is out by: 0
+
+ B81-P12-BER-14T3 is out by: 0
+
+ B81-P12-BER-15T3 is out by: 0
+
+ B81-P12-BER-16T3 is out by: 0
+
+ B81-P12-BER-17T3 is out by: 0
+
+ B81-P12-BER-18T3 is out by: 0
+
+ B81-P12-BER-19T3 is out by: 0
+
+ B81-P12-BER-20T3 is out by: 0
+
+ B81-P32-BER-23T3 is out by: 0
+
+ B81-P32-BER-24T3 is out by: 0
+
+ B81-P32-BER-25T3 is out by: 0
+
+ B81-P32-BER-26T3 is out by: 0
+
+ B81-P30-BER-06T3 is out by: 7.105427357601E-15
+
+ B81-P30-BER-07T3 is out by: 7.105427357601E-15
+
+ B81-P33-BER-01T3 is out by: 0
+
+ B81-P33-BER-02T3 is out by: 0
+
+ B81-P33-BER-03T3 is out by: 0
+
+ B81-P33-BER-04T3 is out by: 0
+
+ B81-P33-BER-05T3 is out by: 0
+
+ B81-P33-BER-06T3 is out by: 0
+
+ B81-P33-BER-07T3 is out by: 0
+
+ B81-P33-BER-08T3 is out by: 0
+
+ B81-P30-BER-08T3 is out by: 0
+
+ B81-P30-BER-09T3 is out by: 0
+
+ B81-P32-BER-01T3 is out by: 0
+
+ B81-P32-BER-02T3 is out by: 0
+
+ B81-P32-BER-03T3 is out by: 0
+
+ B81-P32-BER-04T3 is out by: 0
+
+ B81-P32-BER-07T3 is out by: 0
+
+ B81-P32-BER-08T3 is out by: 0
+
+ B81-P32-BER-09T3 is out by: 0
+
+ B81-P32-BER-10T3 is out by: 7.105427357601E-15
+
+ B81-P32-BER-11T3 is out by: 7.105427357601E-15
+
+ B81-P32-BER-12T3 is out by: 7.105427357601E-15
+
+ B81-P32-BER-13T3 is out by: 7.105427357601E-15
+
+ B81-P30-BER-10T3 is out by: 0.997734548145754
+
+ B81-P30-BER-11T3 is out by: 0.997734548145754
+
+ B81-P30-BER-12T3 is out by: 0.997734548145754
+
+ B81-P30-BER-13T3 is out by: 0.9977345481457
+
+ B81-P31-BER-10T3 is out by: 7.105427357601E-15
+
+ B81-P31-BER-11T3 is out by: 7.105427357601E-15
+
+ B81-P31-BER-12T3 is out by: 7.105427357601E-15
+
+ B81-P31-BER-13T3 is out by: 7.105427357601E-15
