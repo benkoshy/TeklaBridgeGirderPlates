@@ -147,7 +147,7 @@ namespace ContourPlateBridge
             boltArray.Tolerance = 2.00;
             boltArray.BoltStandard = "8.8S";
             boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
-            boltArray.CutLength = 105;
+            boltArray.CutLength = -20;
 
             boltArray.Length = 100;
             boltArray.ExtraLength = 15;
@@ -321,7 +321,7 @@ namespace ContourPlateBridge
             boltArray.Tolerance = 2.00;
             boltArray.BoltStandard = "8.8S";
             boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
-            boltArray.CutLength = 105;
+            boltArray.CutLength = -20;
 
             boltArray.Length = 100;
             boltArray.ExtraLength = 15;
@@ -367,7 +367,7 @@ namespace ContourPlateBridge
             boltArray.Tolerance = 2.00;
             boltArray.BoltStandard = "8.8S";
             boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
-            boltArray.CutLength = 105;
+            boltArray.CutLength = -20;
 
             boltArray.Length = 100;
             boltArray.ExtraLength = 15;
