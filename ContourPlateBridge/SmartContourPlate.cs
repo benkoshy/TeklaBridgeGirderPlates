@@ -49,13 +49,13 @@ namespace ContourPlateBridge
             ContourPoint p1 = new ContourPoint(origin(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
             p1.Chamfer.DZ1 =  modt1Negative();
 
-            ContourPoint p2 = new ContourPoint(bottomRightT2(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
+            ContourPoint p2 = new ContourPoint(bottomRightB2(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
             p2.Chamfer.DZ1 = modt2Negative();
 
-            ContourPoint p3 = new ContourPoint(topRightT3(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
+            ContourPoint p3 = new ContourPoint(topRightB3(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
             p3.Chamfer.DZ1 = modt3Negative();
 
-            ContourPoint p4 = new ContourPoint(topLeftT4(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
+            ContourPoint p4 = new ContourPoint(topLeftB4(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
             p4.Chamfer.DZ1 = modt4Negative();
 
             ContourPlate contourPlate = new ContourPlate();
@@ -102,17 +102,8 @@ namespace ContourPlateBridge
         }
 
         private void InsertColumnOnPlane()
-        {
-            CoordinateSystem cs = new CoordinateSystem();
-            cs.Origin = t1Point();
-            cs.AxisX = getVector(t2Point(), t1Point());
-            cs.AxisY = getVector(t4Point(), t1Point());            
-            
-            Matrix transformationMatrix = MatrixFactory.ToCoordinateSystem(cs);
-
-            Point topOrigin = transformationMatrix.Transform(origin());
-
-            insertColumn(topOrigin);
+        {            
+            insertColumn(origin());
         }
 
         private Vector getVector(Point finalPoint, Point startingPoing)
@@ -156,17 +147,17 @@ namespace ContourPlateBridge
             return new Point(origin().X + halfWidth, origin().Y + halfLength, 0);
         }
 
-        private Point bottomRightT2()
+        private Point bottomRightB2()
         {
             return new Point(xOrigin + aWidth, yOrigin, 0);
         }
 
-        private Point topRightT3()
+        private Point topRightB3()
         {
             return new Point(xOrigin + aWidth, yOrigin + bLength, 0);
         }
 
-        private Point topLeftT4()
+        private Point topLeftB4()
         {
             return new Point(xOrigin, yOrigin + bLength);
         }
@@ -292,8 +283,7 @@ namespace ContourPlateBridge
             double yboltOrigin = (origin().Y + bLength - 32);
             return new Point(xBoltOrigin, yboltOrigin, 0);
         }
-
-
+        
         private Point t1Point()
         {
             return new Point(bottomLeftT1().X, bottomLeftT1().Y, t1);
@@ -301,17 +291,17 @@ namespace ContourPlateBridge
 
         private Point t2Point()
         {
-            return new Point(bottomRightT2().X, bottomRightT2().Y, t2);
+            return new Point(bottomRightB2().X, bottomRightB2().Y, t2);
         }
 
         private Point t3Point()
         {
-            return new Point(topRightT3().X, topRightT3().Y, t3);
+            return new Point(topRightB3().X, topRightB3().Y, t3);
         }
 
         private Point t4Point()
         {
-            return new Point(topLeftT4().X, topLeftT4().Y, t4);
+            return new Point(topLeftB4().X, topLeftB4().Y, t4);
         }
     }
 }
