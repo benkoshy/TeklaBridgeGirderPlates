@@ -96,6 +96,13 @@ namespace ContourPlateBridge
             InsertColumnOnPlane();
         }
 
+        public void AddUserDefinedAttributes()
+        {
+            contourPlate.SetUserProperty("USER_FIELD_1", String.Format("T1: {0}, T2: {1}, T3: {2}, T4: {3}", t1, t2, t3, t4));
+            
+            contourPlate.Modify();
+        }
+
         private double modt1Negative()
         {
             return -1 * (profile - t1);
@@ -445,4 +452,5 @@ namespace ContourPlateBridge
         }
     }
 }
+
 

@@ -47,13 +47,12 @@ namespace ContourPlateBridge
 
                         SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances);
                         contourPlate.addContourPlate();
+                        contourPlate.AddUserDefinedAttributes();
                     }
                 }
             }
 
-            model.CommitChanges();
-
-            Console.ReadLine();
+            model.CommitChanges();            
 
             
             using (var writer = new StreamWriter(@"C:\Users\Koshy\source\repos\ContourPlateBridge\ToleranceReport.csv"))
