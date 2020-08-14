@@ -93,7 +93,7 @@ namespace ContourPlateBridge
             insertVerticalBolts(contourPlate, verticalLeftBoltOrigin());
             insertVerticalBolts(contourPlate, verticalRighBoltOrigin());
             
-            InsertColumnOnPlane();
+            insertBoltsOnTaperedPlane();
         }
 
         public void AddUserDefinedAttributes()
@@ -123,7 +123,7 @@ namespace ContourPlateBridge
             return -1 * (profile - t4);
         }
 
-        private void InsertColumnOnPlane()
+        private void insertBoltsOnTaperedPlane()
         {
             Point t1_and_t3_midpoint = get_t1_t3_diagonal_point();
 
