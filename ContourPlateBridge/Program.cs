@@ -33,7 +33,7 @@ namespace ContourPlateBridge
                     foreach (PlateData plate in plates)
                     {
                         int xInsertionPoint = rowCount * 500;
-                        int yInsertionPoint = columnCount * 720;
+                        int yInsertionPoint = columnCount * 1050;
 
                         if (rowCount == 20)
                         {
