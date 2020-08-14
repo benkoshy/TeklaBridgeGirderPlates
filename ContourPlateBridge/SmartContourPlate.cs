@@ -125,7 +125,7 @@ namespace ContourPlateBridge
 
         private void insertBoltsOnTaperedPlane()
         {
-            Point t1_and_t3_midpoint = get_t1_t3_diagonal_point();
+            Point t1_and_t3_midpoint = get_t2_t4_diagonal_point();
 
             Vector txAxis = getTXAxis();
             Vector tYAxis = getTYAxis();
@@ -244,12 +244,12 @@ namespace ContourPlateBridge
             return getVector(t2Point(), t1Point());
         }
 
-        private Point get_t1_t3_diagonal_point()
+        private Point get_t2_t4_diagonal_point()
         {
-            Vector diagonal = getVector(t3Point(), t1Point());            
+            Vector diagonal = getVector(t4Point(), t2Point());            
             Vector halfDiagonal = diagonal * 0.5;
 
-            Point midpoint = new Point(t1Point().X + halfDiagonal.X, t1Point().Y + halfDiagonal.Y, t1Point().Z + halfDiagonal.Z);
+            Point midpoint = new Point(t2Point().X + halfDiagonal.X, t2Point().Y + halfDiagonal.Y, t2Point().Z + halfDiagonal.Z);
             return midpoint;
         }
 
