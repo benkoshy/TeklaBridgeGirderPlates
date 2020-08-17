@@ -319,11 +319,11 @@ namespace ContourPlateBridge
             boltArray.FirstPosition = bottomLeftBoltOrigin;
             boltArray.SecondPosition = bottomLeftBoltOrigin + new Vector(0, 100, 0);
 
-            boltArray.BoltSize = 16;
+            boltArray.BoltSize = 12;
             boltArray.Tolerance = -3.5;
             boltArray.BoltStandard = "8.8S";
             boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
-            boltArray.CutLength = -20;
+            boltArray.CutLength = -70;
 
             boltArray.Length = 100;
             boltArray.ExtraLength = 15;
@@ -365,11 +365,11 @@ namespace ContourPlateBridge
             boltArray.FirstPosition = bottomLeftBoltOrigin;
             boltArray.SecondPosition = bottomLeftBoltOrigin + new Vector(100, 0, 0);
 
-            boltArray.BoltSize = 16;
+            boltArray.BoltSize = 12;
             boltArray.Tolerance = -3.5;
             boltArray.BoltStandard = "8.8S";
             boltArray.BoltType = BoltGroup.BoltTypeEnum.BOLT_TYPE_WORKSHOP;
-            boltArray.CutLength = -20;
+            boltArray.CutLength = -70;
 
             boltArray.Length = 100;
             boltArray.ExtraLength = 15;
