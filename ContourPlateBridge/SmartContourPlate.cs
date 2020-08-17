@@ -218,6 +218,8 @@ namespace ContourPlateBridge
                 GraphicsDrawer drawer = new GraphicsDrawer();
                 drawer.DrawText(t3Point(), "t3 point is not planar", new Color(1.0, 0.5, 0.0));
 
+                contourPlate.Class = "3";
+
                 Console.WriteLine("\n " + name + "T3 is out by: " + distanceBetweenPoints);
 
                 _tolerances.Add(new ToleranceReport() { ErrorString = name + " - T3 is out by: " + distanceBetweenPoints });

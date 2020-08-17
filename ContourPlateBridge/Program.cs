@@ -60,8 +60,6 @@ namespace ContourPlateBridge
             {
                     csv.WriteRecords(_tolerances);
             }
-            
-
         }
 
         
