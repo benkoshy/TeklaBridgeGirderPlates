@@ -62,23 +62,22 @@ namespace ContourPlateBridge
             // Name into the name field
 
             // we're going counter clock wise
-            ContourPoint p1 = new ContourPoint(origin(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p1.Chamfer.DZ1 =  modt1Negative();
+            ContourPoint p4Origin = new ContourPoint(origin(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
+            p4Origin.Chamfer.DZ1 = modt4Negative();
 
-            ContourPoint p2 = new ContourPoint(bottomRightB2(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p2.Chamfer.DZ1 = modt2Negative();
-
-            ContourPoint p3 = new ContourPoint(topRightB3(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
+            ContourPoint p3 = new ContourPoint(bottomRightB3(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
             p3.Chamfer.DZ1 = modt3Negative();
 
-            ContourPoint p4 = new ContourPoint(topLeftB4(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
-            p4.Chamfer.DZ1 = modt4Negative();
+            ContourPoint p2 = new ContourPoint(topRightB2(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
+            p2.Chamfer.DZ1 = modt2Negative();
 
-            
-            contourPlate.AddContourPoint(p1);
-            contourPlate.AddContourPoint(p2);
+            ContourPoint p1 = new ContourPoint(topLeftB1(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
+            p1.Chamfer.DZ1 = modt1Negative();
+                        
+            contourPlate.AddContourPoint(p4Origin);
             contourPlate.AddContourPoint(p3);
-            contourPlate.AddContourPoint(p4);
+            contourPlate.AddContourPoint(p2);
+            contourPlate.AddContourPoint(p1);
 
             contourPlate.Finish = "HDG";
             contourPlate.Profile.ProfileString = profileString;
@@ -125,7 +124,7 @@ namespace ContourPlateBridge
 
         private void insertBoltsOnTaperedPlane()
         {
-            Point t1_and_t3_midpoint = get_t2_t4_diagonal_point();
+            Point t1_and_t3_midpoint = get_t3_t1_diagonal_point();
 
             Vector txAxis = getTXAxis();
             Vector tYAxis = getTYAxis();
@@ -236,19 +235,22 @@ namespace ContourPlateBridge
                 
         }
 
+        // updated
         private Vector getTYAxis()
         {
-            return getVector(t4Point(), t1Point());
+            return getVector(t1Point(), t4Point());
         }
 
+        // updated
         private Vector getTXAxis()
         {
-            return getVector(t2Point(), t1Point());
+            return getVector(t1Point(), t2Point());
         }
 
-        private Point get_t2_t4_diagonal_point()
+        // updated
+        private Point get_t3_t1_diagonal_point()
         {
-            Vector diagonal = getVector(t4Point(), t2Point());            
+            Vector diagonal = getVector(t1Point(), t3Point());            
             Vector halfDiagonal = diagonal * 0.5;
 
             Point midpoint = new Point(t2Point().X + halfDiagonal.X, t2Point().Y + halfDiagonal.Y, t2Point().Z + halfDiagonal.Z);
@@ -275,18 +277,16 @@ namespace ContourPlateBridge
             column.Insert();
         }
 
-        /// <summary>
-        /// This will always be the bottom left
-        /// </summary>
-        /// <returns></returns>
-        private Point bottomLeftB1()
+        // updated
+        private Point bottomLeftB4()
         {
             return new Point(xOrigin, yOrigin, 0);
         }
 
+        // updated
         private Point origin()
         {
-            return bottomLeftB1();
+            return bottomLeftB4();
         }
 
         private Point flatPlateCentre()
@@ -295,18 +295,21 @@ namespace ContourPlateBridge
             double halfLength = bLength / 2;
             return new Point(origin().X + halfWidth, origin().Y + halfLength, 0);
         }
-
-        private Point bottomRightB2()
+        
+        // updated
+        private Point bottomRightB3()
         {
             return new Point(xOrigin + aWidth, yOrigin, 0);
         }
 
-        private Point topRightB3()
+        // updated
+        private Point topRightB2()
         {
             return new Point(xOrigin + aWidth, yOrigin + bLength, 0);
         }
 
-        private Point topLeftB4()
+        // updated
+        private Point topLeftB1()
         {
             return new Point(xOrigin, yOrigin + bLength);
         }
@@ -404,6 +407,7 @@ namespace ContourPlateBridge
                 Console.WriteLine("BoltArray Insert failed!");
         }
 
+        // updated
         private Point verticalLeftBoltOrigin()
         {
             double xBoltOrigin = (origin().X + 32);
@@ -411,6 +415,7 @@ namespace ContourPlateBridge
             return new Point(xBoltOrigin, yboltOrigin, 0);
         }
 
+        // updated
         private Point verticalRighBoltOrigin()
         {
             double xBoltOrigin = (origin().X + aWidth - 32);
@@ -418,6 +423,7 @@ namespace ContourPlateBridge
             return new Point(xBoltOrigin, yboltOrigin, 0);
         }
 
+        // updated
         private Point horizontalBottomBoltOrigin()
         {
             double xBoltOrigin = (origin().X + aWidth / 2) - 85;
@@ -426,6 +432,7 @@ namespace ContourPlateBridge
             return new Point(xBoltOrigin, yboltOrigin, 0);
         }
 
+        // updated
         private Point horizontalTopBoltOrigin()
         {
             double xBoltOrigin = (origin().X + aWidth / 2) - 85;
@@ -433,24 +440,29 @@ namespace ContourPlateBridge
             return new Point(xBoltOrigin, yboltOrigin, 0);
         }
         
+
+        // updated
         private Point t1Point()
         {
-            return new Point(bottomLeftB1().X, bottomLeftB1().Y, t1);
+            return new Point(topLeftB1().X, topLeftB1().Y, t1);
         }
 
+        // updated
         private Point t2Point()
         {
-            return new Point(bottomRightB2().X, bottomRightB2().Y, t2);
+            return new Point(topRightB2().X, topRightB2().Y, t2);
         }
 
+        // updated
         private Point t3Point()
         {
-            return new Point(topRightB3().X, topRightB3().Y, t3);
+            return new Point(bottomRightB3().X, bottomRightB3().Y, t3);
         }
 
+        // updated
         private Point t4Point()
         {
-            return new Point(topLeftB4().X, topLeftB4().Y, t4);
+            return new Point(bottomLeftB4().X, bottomLeftB4().Y, t4);
         }
     }
 }
