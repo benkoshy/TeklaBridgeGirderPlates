@@ -139,7 +139,7 @@ namespace ContourPlateBridge
 
             insertFinalBoltArray(intersectionPoint);
 
-            checkIfPlanar();
+            checkIfPlanarAndColorizeAccordingly();
         }
 
         private void insertFinalBoltArray(Point inclinedOrigin)
@@ -198,7 +198,7 @@ namespace ContourPlateBridge
             model.GetWorkPlaneHandler().SetCurrentTransformationPlane(currentPlane);
         }
 
-        private void checkIfPlanar()
+        private void checkIfPlanarAndColorizeAccordingly()
         {
             Vector txAxis = getTXAxis();
             Vector tYAxis = getTYAxis();
@@ -215,17 +215,17 @@ namespace ContourPlateBridge
             if (Math.Abs(distanceBetweenPoints) > 0.05)
             {
                 GraphicsDrawer drawer = new GraphicsDrawer();
-                drawer.DrawText(t3Point(), "t3 point is not planar", new Color(1.0, 0.5, 0.0));
+                drawer.DrawText(excelT2Point(), "t2 point is not planar", new Color(1.0, 0.5, 0.0));
 
                 contourPlate.Class = "3";
 
-                Console.WriteLine("\n " + name + "T3 is out by: " + distanceBetweenPoints);
+                Console.WriteLine("\n " + name + "T2 is out by: " + distanceBetweenPoints);
 
-                _tolerances.Add(new ToleranceReport() { ErrorString = name + " - T3 is out by: " + distanceBetweenPoints });
+                _tolerances.Add(new ToleranceReport() { ErrorString = name + " - T2 is out by: " + distanceBetweenPoints });
             }
             else
             {
-                Console.WriteLine("\n " + name + "T3 is out by: " + distanceBetweenPoints);
+                Console.WriteLine("\n " + name + "T2 is out by: " + distanceBetweenPoints);
             }            
          }
 
@@ -238,13 +238,13 @@ namespace ContourPlateBridge
         // updated
         private Vector getTYAxis()
         {
-            return getVector(t1Point(), t4Point());
+            return getVector(t4Point(), t1Point());
         }
 
         // updated
         private Vector getTXAxis()
         {
-            return getVector(t1Point(), t2Point());
+            return getVector(t3Point(), t4Point());
         }
 
         // updated
@@ -253,7 +253,7 @@ namespace ContourPlateBridge
             Vector diagonal = getVector(t1Point(), t3Point());            
             Vector halfDiagonal = diagonal * 0.5;
 
-            Point midpoint = new Point(t2Point().X + halfDiagonal.X, t2Point().Y + halfDiagonal.Y, t2Point().Z + halfDiagonal.Z);
+            Point midpoint = new Point(t3Point().X + halfDiagonal.X, t3Point().Y + halfDiagonal.Y, t3Point().Z + halfDiagonal.Z);
             return midpoint;
         }
 
