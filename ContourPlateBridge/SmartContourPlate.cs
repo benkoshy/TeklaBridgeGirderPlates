@@ -215,17 +215,17 @@ namespace ContourPlateBridge
             if (Math.Abs(distanceBetweenPoints) > 0.05)
             {
                 GraphicsDrawer drawer = new GraphicsDrawer();
-                drawer.DrawText(excelT2Point(), "t2 point is not planar", new Color(1.0, 0.5, 0.0));
+                drawer.DrawText(excelT2Point(), " t2 point is not planar", new Color(1.0, 0.5, 0.0));
 
                 contourPlate.Class = "3";
 
-                Console.WriteLine("\n " + name + "T2 is out by: " + distanceBetweenPoints);
+                Console.WriteLine("\n " + name + " T2 is out by: " + distanceBetweenPoints);
 
                 _tolerances.Add(new ToleranceReport() { ErrorString = name + " - T2 is out by: " + distanceBetweenPoints });
             }
             else
             {
-                Console.WriteLine("\n " + name + "T2 is out by: " + distanceBetweenPoints);
+                Console.WriteLine("\n " + name + " - T2 is out by: " + distanceBetweenPoints);
             }            
          }
 
