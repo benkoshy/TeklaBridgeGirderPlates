@@ -279,14 +279,14 @@ namespace ContourPlateBridge
         /// This will always be the bottom left
         /// </summary>
         /// <returns></returns>
-        private Point bottomLeftT1()
+        private Point bottomLeftB1()
         {
             return new Point(xOrigin, yOrigin, 0);
         }
 
         private Point origin()
         {
-            return bottomLeftT1();
+            return bottomLeftB1();
         }
 
         private Point flatPlateCentre()
@@ -435,7 +435,7 @@ namespace ContourPlateBridge
         
         private Point t1Point()
         {
-            return new Point(bottomLeftT1().X, bottomLeftT1().Y, t1);
+            return new Point(bottomLeftB1().X, bottomLeftB1().Y, t1);
         }
 
         private Point t2Point()
