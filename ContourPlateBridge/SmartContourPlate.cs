@@ -109,7 +109,7 @@ namespace ContourPlateBridge
 
         private double modt2Negative()
         {
-            return -1 * (profile - t2);
+            return -1 * (profile - t2PointCalculated().Z);
         }
 
         private double modt3Negative()
@@ -445,12 +445,20 @@ namespace ContourPlateBridge
         private Point t1Point()
         {
             return new Point(topLeftB1().X, topLeftB1().Y, t1);
-        }
-
-        // updated
-        private Point t2Point()
+        }  
+        
+        private Point t2PointCalculated()
         {
-            return new Point(topRightB2().X, topRightB2().Y, t2);
+            Vector txAxis = getTXAxis();
+            Vector tYAxis = getTYAxis();
+            Vector zTVector = getTZAxis();
+
+            Line line = new Line(excelT2Point(), zTVector);
+            GeometricPlane plane = new GeometricPlane(t1Point(), txAxis, tYAxis);
+
+            Point intersectionPoint = Intersection.LineToPlane(line, plane);
+
+            return intersectionPoint;
         }
 
         private Point excelT2Point()
