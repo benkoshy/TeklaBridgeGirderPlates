@@ -204,13 +204,13 @@ namespace ContourPlateBridge
             Vector tYAxis = getTYAxis();
             Vector zTVector = getTZAxis();
 
-            Line line = new Line(t3Point(), zTVector);
+            Line line = new Line(excelT2Point(), zTVector);
             GeometricPlane plane = new GeometricPlane(t1Point(), txAxis, tYAxis);
 
             Point intersectionPoint = Intersection.LineToPlane(line, plane);
 
             // get the distance between the intersection point and t4
-            double distanceBetweenPoints = Distance.PointToPoint(intersectionPoint, t3Point());
+            double distanceBetweenPoints = Distance.PointToPoint(intersectionPoint, excelT2Point());
 
             if (Math.Abs(distanceBetweenPoints) > 0.05)
             {
@@ -449,6 +449,11 @@ namespace ContourPlateBridge
 
         // updated
         private Point t2Point()
+        {
+            return new Point(topRightB2().X, topRightB2().Y, t2);
+        }
+
+        private Point excelT2Point()
         {
             return new Point(topRightB2().X, topRightB2().Y, t2);
         }
