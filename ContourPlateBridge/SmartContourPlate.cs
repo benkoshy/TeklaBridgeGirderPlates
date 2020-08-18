@@ -109,7 +109,7 @@ namespace ContourPlateBridge
 
         private double modt2Negative()
         {
-            return -1 * (profile - t2PointCalculated().Z);
+            return -1 * (profile - t2);
         }
 
         private double modt3Negative()
