@@ -212,12 +212,23 @@ namespace ContourPlateBridge
             // get the distance between the intersection point and t4
             double distanceBetweenPoints = Distance.PointToPoint(intersectionPoint, excelT2Point());
 
-            if (Math.Abs(distanceBetweenPoints) > 0.05)
+            if (Math.Abs(distanceBetweenPoints) <= 0.05 && Math.Abs(distanceBetweenPoints) < 10   )
             {
                 GraphicsDrawer drawer = new GraphicsDrawer();
                 drawer.DrawText(excelT2Point(), " t2 point is not planar", new Color(1.0, 0.5, 0.0));
 
                 contourPlate.Class = "3";
+
+                Console.WriteLine("\n " + name + " T2 is out by: " + distanceBetweenPoints);
+
+                _tolerances.Add(new ToleranceReport() { ErrorString = name + " - T2 is out by: " + distanceBetweenPoints });
+            }
+            else if (Math.Abs(distanceBetweenPoints) >= 10)
+            {
+                GraphicsDrawer drawer = new GraphicsDrawer();
+                drawer.DrawText(excelT2Point(), " t2 point is not planar", new Color(1.0, 0.5, 0.0));
+
+                contourPlate.Class = "5";
 
                 Console.WriteLine("\n " + name + " T2 is out by: " + distanceBetweenPoints);
 
@@ -447,19 +458,19 @@ namespace ContourPlateBridge
             return new Point(topLeftB1().X, topLeftB1().Y, t1);
         }  
         
-        private Point t2PointCalculated()
-        {
-            Vector txAxis = getTXAxis();
-            Vector tYAxis = getTYAxis();
-            Vector zTVector = getTZAxis();
+        //private Point t2PointCalculated()
+        //{
+        //    Vector txAxis = getTXAxis();
+        //    Vector tYAxis = getTYAxis();
+        //    Vector zTVector = getTZAxis();
 
-            Line line = new Line(excelT2Point(), zTVector);
-            GeometricPlane plane = new GeometricPlane(t1Point(), txAxis, tYAxis);
+        //    Line line = new Line(excelT2Point(), zTVector);
+        //    GeometricPlane plane = new GeometricPlane(t1Point(), txAxis, tYAxis);
 
-            Point intersectionPoint = Intersection.LineToPlane(line, plane);
+        //    Point intersectionPoint = Intersection.LineToPlane(line, plane);
 
-            return intersectionPoint;
-        }
+        //    return intersectionPoint;
+        //}
 
         private Point excelT2Point()
         {
