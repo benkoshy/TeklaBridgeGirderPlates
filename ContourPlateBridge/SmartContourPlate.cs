@@ -212,7 +212,7 @@ namespace ContourPlateBridge
             // get the distance between the intersection point and t4
             double distanceBetweenPoints = Distance.PointToPoint(intersectionPoint, excelT2Point());
 
-            if (Math.Abs(distanceBetweenPoints) <= 0.05 && Math.Abs(distanceBetweenPoints) < 10   )
+            if (Math.Abs(distanceBetweenPoints) >= 0.05 && Math.Abs(distanceBetweenPoints) < 10   )
             {
                 GraphicsDrawer drawer = new GraphicsDrawer();
                 drawer.DrawText(excelT2Point(), " t2 point is not planar", new Color(1.0, 0.5, 0.0));
