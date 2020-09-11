@@ -8,12 +8,14 @@ using Tekla.Structures.Model;
 
 using CsvHelper;
 using System.IO;
-
+using System.Text.RegularExpressions;
 
 namespace ContourPlateBridge
 {
     class Program
     {
+        static Regex regex = new Regex(@"\d+$");
+
         static void Main(string[] args)
         {
             Model model = new Model();
@@ -25,30 +27,37 @@ namespace ContourPlateBridge
                 using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\COMBINED B81-AND-B80- Bearing Schedules.csv"))
                 using (var csv = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
                 {                    
-                    var plates = csv.GetRecords<PlateData>();
+                    var plates = csv.GetRecords<PlateData>().ToList();
 
                     int rowCount = 0;
-                    int columnCount = 0;                    
+                    int columnCount = 0;
 
-                    foreach (PlateData plate in plates)
+                    if (plates.All(p => isBearingMarksAppropriatelyNamed( p.BearingMark)))
                     {
-                        int xInsertionPoint = rowCount * 500;
-                        int yInsertionPoint = columnCount * 1050;
-
-                        if (rowCount == 20)
+                        foreach (PlateData plate in plates)
                         {
-                            columnCount++;
-                            rowCount = 0;
+                            int xInsertionPoint = rowCount * 500;
+                            int yInsertionPoint = columnCount * 1050;
+
+                            if (rowCount == 20)
+                            {
+                                columnCount++;
+                                rowCount = 0;
+                            }
+                            else
+                            {
+                                rowCount++;
+                            }
+
+                            SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances, endingNumber(plate.BearingMark));
+                            contourPlate.addContourPlate();
+                            contourPlate.AddUserDefinedAttributes();
                         }
-                        else
-                        {
-                            rowCount++;
-                        }                        
-
-                        SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances);
-                        contourPlate.addContourPlate();
-                        contourPlate.AddUserDefinedAttributes();
                     }
+                    else
+                    {
+                        Console.WriteLine("Oops: you have a problem with one of the names of the plates - they do not end with two numbers as required.");
+                    }                   
                 }
             }
 
@@ -60,6 +69,25 @@ namespace ContourPlateBridge
             {
                     csv.WriteRecords(_tolerances);
             }
+        }
+
+        private static bool isBearingMarksAppropriatelyNamed(string name)
+        {
+            if (regex.IsMatch(name))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private static int endingNumber(string bearingMark)
+        {
+            Match match = regex.Match(bearingMark);
+
+            return int.Parse( match.Value);
         }
 
         

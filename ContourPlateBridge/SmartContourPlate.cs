@@ -33,8 +33,9 @@ namespace ContourPlateBridge
         ContourPlate contourPlate;
 
         private List<ToleranceReport> _tolerances;
+        private int lastTwoDigits;
 
-        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, int t1, int t2, int t3, int t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances)
+        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, int t1, int t2, int t3, int t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances, int lastTwoDigits)
         {
             this.model = model;
             this.xOrigin = xOrigin;
@@ -51,7 +52,7 @@ namespace ContourPlateBridge
             this.name = bearingMark;
 
             this._tolerances = _tolerances;
-            
+            this.lastTwoDigits = lastTwoDigits;
             this.contourPlate = new ContourPlate();
         }       
 
@@ -87,7 +88,7 @@ namespace ContourPlateBridge
 
             // prefix number
             contourPlate.AssemblyNumber.Prefix = this.name;
-
+            contourPlate.AssemblyNumber.StartNumber = this.lastTwoDigits;
             
             contourPlate.Insert();
 
