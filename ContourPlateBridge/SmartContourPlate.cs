@@ -84,6 +84,11 @@ namespace ContourPlateBridge
             contourPlate.Material.MaterialString = "250";
             contourPlate.Name = name;
             contourPlate.Position.Depth = Position.DepthEnum.FRONT;
+
+            // prefix number
+            contourPlate.AssemblyNumber.Prefix = this.name;
+
+            
             contourPlate.Insert();
 
             insertHorizontalBolts(contourPlate, horizontalBottomBoltOrigin());
