@@ -32,7 +32,7 @@ namespace ContourPlateBridge
                     int rowCount = 0;
                     int columnCount = 0;
 
-                    if (plates.All(p => isBearingMarksAppropriatelyNamed( p.BearingMark)))
+                    if (plates.All(p => (new PrefixMaker(p.BearingMark)).IsMatch() ))
                     {
                         foreach (PlateData plate in plates)
                         {
@@ -49,7 +49,7 @@ namespace ContourPlateBridge
                                 rowCount++;
                             }
 
-                            SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances, endingNumber(plate.BearingMark), plate.IsM10BoltsRequired);
+                            SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances, (new PrefixMaker(plate.BearingMark)), plate.IsM10BoltsRequired);
                             contourPlate.addContourPlate();
                             contourPlate.AddUserDefinedAttributes();
                         }
@@ -72,26 +72,5 @@ namespace ContourPlateBridge
 
             Console.ReadLine();
         }
-
-        private static bool isBearingMarksAppropriatelyNamed(string name)
-        {
-            if (regex.IsMatch(name))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private static int endingNumber(string bearingMark)
-        {
-            Match match = regex.Match(bearingMark);
-
-            return int.Parse( match.Value);
-        }
-
-        
     }
 }

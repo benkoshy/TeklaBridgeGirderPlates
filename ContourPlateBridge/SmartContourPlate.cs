@@ -33,10 +33,10 @@ namespace ContourPlateBridge
         ContourPlate contourPlate;
 
         private List<ToleranceReport> _tolerances;
-        private int lastTwoDigits;
+        private PrefixMaker prefixMaker;
         private readonly bool isM10BoltsRequired;
 
-        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, double t1, double t2, double t3, double t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances, int lastTwoDigits, bool IsM10BoltsRequired)
+        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, double t1, double t2, double t3, double t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances, PrefixMaker prefixMaker, bool IsM10BoltsRequired)
         {
             this.model = model;
             this.xOrigin = xOrigin;
@@ -53,7 +53,7 @@ namespace ContourPlateBridge
             this.name = bearingMark;
 
             this._tolerances = _tolerances;
-            this.lastTwoDigits = lastTwoDigits;
+            this.prefixMaker = prefixMaker;
             isM10BoltsRequired = IsM10BoltsRequired;
             this.contourPlate = new ContourPlate();
         }       
@@ -104,14 +104,14 @@ namespace ContourPlateBridge
                 insertVerticalBolts(contourPlate, verticalRighBoltOrigin(verticalSpacing), verticalSpacing);
             }
 
-
             insertBoltsOnTaperedPlane();
         }
 
         private void setAssemblyPrefixAndStartNumbers()
         {
-            contourPlate.AssemblyNumber.Prefix = this.name;
-            contourPlate.AssemblyNumber.StartNumber = this.lastTwoDigits;
+            contourPlate.AssemblyNumber.Prefix = prefixMaker.GetAssembly();
+
+            contourPlate.AssemblyNumber.StartNumber = prefixMaker.GetPrefix();
         }
 
         public void AddUserDefinedAttributes()
