@@ -76,7 +76,7 @@ namespace ContourPlateBridge
 
             ContourPoint p1 = new ContourPoint(topLeftB1(), new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_LINE));
             p1.Chamfer.DZ1 = modt1Negative();
-                        
+
             contourPlate.AddContourPoint(p4Origin);
             contourPlate.AddContourPoint(p3);
             contourPlate.AddContourPoint(p2);
@@ -89,9 +89,8 @@ namespace ContourPlateBridge
             contourPlate.Position.Depth = Position.DepthEnum.FRONT;
 
             // prefix number
-            contourPlate.AssemblyNumber.Prefix = this.name;
-            contourPlate.AssemblyNumber.StartNumber = this.lastTwoDigits;
-            
+            setAssemblyPrefixAndStartNumbers();
+
             contourPlate.Insert();
 
             if (isM10BoltsRequired)
@@ -104,9 +103,15 @@ namespace ContourPlateBridge
                 insertVerticalBolts(contourPlate, verticalLeftBoltOrigin(verticalSpacing), verticalSpacing);
                 insertVerticalBolts(contourPlate, verticalRighBoltOrigin(verticalSpacing), verticalSpacing);
             }
-            
-            
+
+
             insertBoltsOnTaperedPlane();
+        }
+
+        private void setAssemblyPrefixAndStartNumbers()
+        {
+            contourPlate.AssemblyNumber.Prefix = this.name;
+            contourPlate.AssemblyNumber.StartNumber = this.lastTwoDigits;
         }
 
         public void AddUserDefinedAttributes()
