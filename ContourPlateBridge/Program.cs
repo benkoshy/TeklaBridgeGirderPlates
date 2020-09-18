@@ -49,7 +49,7 @@ namespace ContourPlateBridge
                                 rowCount++;
                             }
 
-                            SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances, endingNumber(plate.BearingMark));
+                            SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances, endingNumber(plate.BearingMark), plate.IsM10BoltsRequired);
                             contourPlate.addContourPlate();
                             contourPlate.AddUserDefinedAttributes();
                         }

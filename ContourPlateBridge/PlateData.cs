@@ -38,6 +38,6 @@ namespace ContourPlateBridge
         [Name("M10")]
         [BooleanTrueValues("YES")]
         [BooleanFalseValues("NO")]
-        public bool M10BoltsRequired { get; set; }
+        public bool IsM10BoltsRequired { get; set; }
     }
 }

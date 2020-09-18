@@ -34,8 +34,9 @@ namespace ContourPlateBridge
 
         private List<ToleranceReport> _tolerances;
         private int lastTwoDigits;
+        private readonly bool isM10BoltsRequired;
 
-        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, double t1, double t2, double t3, double t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances, int lastTwoDigits)
+        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, double t1, double t2, double t3, double t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances, int lastTwoDigits, bool IsM10BoltsRequired)
         {
             this.model = model;
             this.xOrigin = xOrigin;
@@ -53,6 +54,7 @@ namespace ContourPlateBridge
 
             this._tolerances = _tolerances;
             this.lastTwoDigits = lastTwoDigits;
+            isM10BoltsRequired = IsM10BoltsRequired;
             this.contourPlate = new ContourPlate();
         }       
 
@@ -90,13 +92,17 @@ namespace ContourPlateBridge
             contourPlate.AssemblyNumber.Prefix = this.name;
             contourPlate.AssemblyNumber.StartNumber = this.lastTwoDigits;
             
-            contourPlate.Insert();            
+            contourPlate.Insert();
 
-            insertHorizontalBolts(contourPlate, horizontalBottomBoltOrigin());
-            insertHorizontalBolts(contourPlate, horizontalTopBoltOrigin());
+            if (isM10BoltsRequired)
+            {
+                insertHorizontalBolts(contourPlate, horizontalBottomBoltOrigin());
+                insertHorizontalBolts(contourPlate, horizontalTopBoltOrigin());
 
-            insertVerticalBolts(contourPlate, verticalLeftBoltOrigin());
-            insertVerticalBolts(contourPlate, verticalRighBoltOrigin());
+                insertVerticalBolts(contourPlate, verticalLeftBoltOrigin());
+                insertVerticalBolts(contourPlate, verticalRighBoltOrigin());
+            }
+            
             
             insertBoltsOnTaperedPlane();
         }
