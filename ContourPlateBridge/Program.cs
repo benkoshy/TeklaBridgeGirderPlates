@@ -24,7 +24,7 @@ namespace ContourPlateBridge
 
             if (model.GetConnectionStatus())
             {
-                using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\COMBINED B81-AND-B80- Bearing Schedules.csv"))
+                using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\20200918-PLATES TO DETAIL.csv"))
                 using (var csv = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
                 {                    
                     var plates = csv.GetRecords<PlateData>().ToList();
