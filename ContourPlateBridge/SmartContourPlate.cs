@@ -109,10 +109,17 @@ namespace ContourPlateBridge
 
         public void AddUserDefinedAttributes()
         {
-            contourPlate.SetUserProperty("USER_FIELD_1", String.Format("T1: {0}, T2: {1}, T3: {2}, T4: {3}", t1, t2, t3, t4));
+            contourPlate.SetUserProperty("USER_FIELD_1", String.Format("T1: {0}, T2: {1}, T3: {2}, T4: {3}", midPointRoundingAwayFromZero(t1), midPointRoundingAwayFromZero(t2), midPointRoundingAwayFromZero(t3), midPointRoundingAwayFromZero(t4)));
             
             contourPlate.Modify();
         }
+
+
+        private string midPointRoundingAwayFromZero(double tValue)
+        {
+            return Math.Round(tValue, 1, MidpointRounding.AwayFromZero).ToString();
+        }
+
 
         private double modt1Negative()
         {
