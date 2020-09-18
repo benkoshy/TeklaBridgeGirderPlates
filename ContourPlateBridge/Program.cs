@@ -69,6 +69,8 @@ namespace ContourPlateBridge
             {
                     csv.WriteRecords(_tolerances);
             }
+
+            Console.ReadLine();
         }
 
         private static bool isBearingMarksAppropriatelyNamed(string name)
