@@ -21,18 +21,23 @@ namespace ContourPlateBridge
         public int DimB { get; set; }
 
         [Name("T1")]
-        public int T1 { get; set; }
+        public double T1 { get; set; }
 
         [Name("T2")]
-        public int T2 { get; set; }
+        public double T2 { get; set; }
 
         [Name("T3")]
-        public int T3 { get; set; }
+        public double T3 { get; set; }
 
         [Name("T4")]
-        public int T4 { get; set; }
+        public double T4 { get; set; }
 
         [Name("PROFILE")]
         public int Profile { get; set; }
+
+        [Name("M10")]
+        [BooleanTrueValues("YES")]
+        [BooleanFalseValues("NO")]
+        public bool M10BoltsRequired { get; set; }
     }
 }
