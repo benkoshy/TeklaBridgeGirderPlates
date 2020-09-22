@@ -76,6 +76,7 @@ namespace ContourPlateBridge
                 {
                     csv.WriteRecords(_tolerances);
                 }
+                Console.WriteLine("********* There are some tolerance problems - check the report.");
             }
             else
             {
@@ -91,7 +92,11 @@ namespace ContourPlateBridge
                     csv.WriteRecords(inconsistentMValues);
                 }
 
-                Console.WriteLine("There are some inconsistent M values - please view the report generated.");
+                Console.WriteLine("********There are some inconsistent M values - please view the report generated.");
+            }
+            else
+            {
+                Console.WriteLine("No inconsistent values to report");
             }            
 
             Console.ReadLine();
