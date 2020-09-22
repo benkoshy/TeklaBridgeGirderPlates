@@ -63,14 +63,21 @@ namespace ContourPlateBridge
                 }
             }
 
-            model.CommitChanges();            
+            model.CommitChanges();
 
-            
-            using (var writer = new StreamWriter(@"C:\Users\Koshy\source\repos\ContourPlateBridge\ToleranceReport.csv"))
-            using (var csv = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
+            if (_tolerances.Count > 0)
             {
+                using (var writer = new StreamWriter(@"C:\Users\Koshy\source\repos\ContourPlateBridge\ToleranceReport.csv"))
+                using (var csv = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
+                {
                     csv.WriteRecords(_tolerances);
+                }
             }
+            else
+            {
+                Console.WriteLine("No notable tolerances to report");
+            }
+            
 
             Console.ReadLine();
         }
