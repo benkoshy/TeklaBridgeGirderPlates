@@ -23,6 +23,8 @@ namespace ContourPlateBridge
 
             List<ToleranceReport> _tolerances = new List<ToleranceReport>();
 
+            List<MReport> inconsistentMValues = new List<MReport>();
+
             if (model.GetConnectionStatus())
             {
                 using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\20200922-PLATES TO DETAIL-REV-1.csv"))
@@ -51,6 +53,8 @@ namespace ContourPlateBridge
                                 rowCount++;
                             }
 
+                            AddToMReportIfRequired(plate, inconsistentMValues);
+
                             SmartContourPlate contourPlate = new SmartContourPlate(model, xInsertionPoint, yInsertionPoint, plate.Profile, plate.T1, plate.T2, plate.T3, plate.T4, plate.DimA, plate.DimB, plate.BearingMark, _tolerances, (new PrefixMaker(plate.BearingMark)), plate.IsM10BoltsRequired, plate.M);
                             contourPlate.addContourPlate();
                             contourPlate.AddUserDefinedAttributes();
@@ -77,9 +81,46 @@ namespace ContourPlateBridge
             {
                 Console.WriteLine("No notable tolerances to report");
             }
-            
+
+
+            if (inconsistentMValues.Count > 0)
+            {
+                using (var writer = new StreamWriter(@"C:\Users\Koshy\source\repos\ContourPlateBridge\InconsistentMValues.csv"))
+                using (var csv = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
+                {
+                    csv.WriteRecords(inconsistentMValues);
+                }
+
+                Console.WriteLine("There are some inconsistent M values - please view the report generated.");
+            }            
 
             Console.ReadLine();
+        }
+
+        private static void AddToMReportIfRequired(PlateData plate, List<MReport> inconsistentMValues)
+        {
+            if ( (plate.T4 + plate.T3) - (plate.T1 + plate.T2) > 0 )
+            {
+                if (plate.M > 0)
+                {
+                    // we are ok
+                }
+                else
+                {
+                    inconsistentMValues.Add(new MReport() { MReportValue = String.Format("Bearing mark {0} has an inconsitent M value", plate.BearingMark) });
+                }
+            }
+            else
+            {
+                if (plate.M < 0)
+                {
+                    // we are ok
+                }
+                else
+                {
+                    inconsistentMValues.Add(new MReport() { MReportValue = String.Format("Bearing mark {0} has an inconsitent M value", plate.BearingMark) });
+                }
+            }
         }
     }
 }
