@@ -35,8 +35,9 @@ namespace ContourPlateBridge
         private List<ToleranceReport> _tolerances;
         private PrefixMaker prefixMaker;
         private readonly bool isM10BoltsRequired;
+        private readonly double mValue;
 
-        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, double t1, double t2, double t3, double t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances, PrefixMaker prefixMaker, bool IsM10BoltsRequired)
+        public SmartContourPlate(Model model, double xOrigin, double yOrigin, int profile, double t1, double t2, double t3, double t4, double aWidth, double bLength, string bearingMark, List<ToleranceReport> _tolerances, PrefixMaker prefixMaker, bool IsM10BoltsRequired, double mValue)
         {
             this.model = model;
             this.xOrigin = xOrigin;
@@ -55,6 +56,7 @@ namespace ContourPlateBridge
             this._tolerances = _tolerances;
             this.prefixMaker = prefixMaker;
             isM10BoltsRequired = IsM10BoltsRequired;
+            this.mValue = mValue;
             this.contourPlate = new ContourPlate();
         }       
 

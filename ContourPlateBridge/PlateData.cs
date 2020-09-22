@@ -35,6 +35,9 @@ namespace ContourPlateBridge
         [Name("PROFILE")]
         public int Profile { get; set; }
 
+        [Name("M")]
+        public double M { get; set; }
+
         [Name("M10")]
         [BooleanTrueValues("YES")]
         [BooleanFalseValues("NO")]
