@@ -5,42 +5,60 @@ using System.Text;
 using System.Threading.Tasks;
 
 using CsvHelper;
+using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
+using CsvHelper.TypeConversion;
 
 namespace ContourPlateBridge
 {
-    class PlateData
+    class PlateDataMap : ClassMap<PlateData>
     {
-        [Name("BEARING MARK")]
-        public string BearingMark { get; set; }
+        public PlateDataMap()
+        {
+            Map(m => m.BearingMark).Name("BEARING MARK").TypeConverter<TrimConverter>();
+            Map(m => m.M).Name("M");
+            Map(m => m.DimA).Name("DIM A");
+            Map(m => m.DimB).Name("DIM B");
+            Map(m => m.T1).Name("T1");
+            Map(m => m.T2).Name("T2"); 
+            Map(m => m.T3).Name("T3"); 
+            Map(m => m.T4).Name("T4"); 
+            Map(m => m.Profile).Name("PROFILE");
+            Map(m => m.IsM10BoltsRequired).Name("M10").TypeConverterOption.BooleanValues(true, true, "YES", "Yes", "Y").TypeConverterOption.BooleanValues(false, false, "NO", "No", "N") ;
+        }
+    }
 
-        [Name("DIM A")]
+
+    public class TrimConverter : DefaultTypeConverter
+    {
+        public override object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData)
+        {
+            return text.Trim();
+        }
+    }
+
+    class PlateData
+    {   
+        public string BearingMark { get; set; }       
+        
+        public double M { get; set; }
+        
         public int DimA { get; set; }
-
-        [Name("DIM B")]
+                
         public int DimB { get; set; }
-
-        [Name("T1")]
+                
         public double T1 { get; set; }
 
-        [Name("T2")]
         public double T2 { get; set; }
 
-        [Name("T3")]
         public double T3 { get; set; }
 
-        [Name("T4")]
         public double T4 { get; set; }
-
-        [Name("PROFILE")]
+                
         public int Profile { get; set; }
 
-        [Name("M")]
-        public double M { get; set; }
-
-        [Name("M10")]
-        [BooleanTrueValues("YES")]
-        [BooleanFalseValues("NO")]
         public bool IsM10BoltsRequired { get; set; }
     }
 }
+
+

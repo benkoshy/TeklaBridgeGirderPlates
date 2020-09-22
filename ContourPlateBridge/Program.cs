@@ -9,6 +9,7 @@ using Tekla.Structures.Model;
 using CsvHelper;
 using System.IO;
 using System.Text.RegularExpressions;
+using CsvHelper.Configuration;
 
 namespace ContourPlateBridge
 {
@@ -24,9 +25,10 @@ namespace ContourPlateBridge
 
             if (model.GetConnectionStatus())
             {
-                using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\20200922-PLATES TO DETAIL.csv"))
+                using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\20200922-PLATES TO DETAIL-REV-1.csv"))
                 using (var csv = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
                 {                    
+                    csv.Configuration.RegisterClassMap<PlateDataMap>();
                     var plates = csv.GetRecords<PlateData>().ToList();
 
                     int rowCount = 0;

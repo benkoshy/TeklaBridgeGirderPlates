@@ -22,7 +22,14 @@ namespace ContourPlateBridge
 
         public bool IsMatch()
         {
-            return match.Success;
+            if (match.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string GetAssembly()
