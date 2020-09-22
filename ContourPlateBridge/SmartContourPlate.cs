@@ -160,10 +160,17 @@ namespace ContourPlateBridge
             Vector zTVector = getTZAxis();
             Vector negativeZVector = zTVector * -1;
 
-            Line line = new Line(t1_and_t3_midpoint, negativeZVector);
-            GeometricPlane plane = new GeometricPlane(new Point(0, 0, 0), new Vector(0, 0, 1));
-
+                // This new code gets the m point as it is flat on the base plate on the ground
+                // projects a line till it hits the tapered face
+                // this is the intersection point
+            Point mCentrePoint = new Point(flatPlateCentre().X, flatPlateCentre().Y + -1 * mValue, 0);
+            Line line = new Line(mCentrePoint, zTVector);
+            GeometricPlane plane = new GeometricPlane(t4Point(), zTVector);
             Point intersectionPoint = Intersection.LineToPlane(line, plane);
+
+            //Line line = new Line(t1_and_t3_midpoint, negativeZVector);
+            //GeometricPlane plane = new GeometricPlane(new Point(0, 0, 0), new Vector(0, 0, 1));
+            //Point intersectionPoint = Intersection.LineToPlane(line, plane);
 
             insertFinalBoltArray(intersectionPoint);
 
