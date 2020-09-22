@@ -93,6 +93,11 @@ namespace ContourPlateBridge
             // prefix number
             setAssemblyPrefixAndStartNumbers();
 
+            if (mValue < 0)
+            {
+                contourPlate.Class = "3";
+            }            
+
             contourPlate.Insert();
 
             if (isM10BoltsRequired)
