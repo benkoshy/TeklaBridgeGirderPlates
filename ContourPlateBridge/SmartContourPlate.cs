@@ -168,6 +168,7 @@ namespace ContourPlateBridge
             GeometricPlane plane = new GeometricPlane(t4Point(), zTVector);
             Point intersectionPoint = Intersection.LineToPlane(line, plane);
 
+            // This is the old code
             //Line line = new Line(t1_and_t3_midpoint, negativeZVector);
             //GeometricPlane plane = new GeometricPlane(new Point(0, 0, 0), new Vector(0, 0, 1));
             //Point intersectionPoint = Intersection.LineToPlane(line, plane);
