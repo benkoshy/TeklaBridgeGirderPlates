@@ -168,7 +168,7 @@ namespace ContourPlateBridge
                 // This new code gets the m point as it is flat on the base plate on the ground
                 // projects a line till it hits the tapered face
                 // this is the intersection point
-            Point mCentrePoint = new Point(flatPlateCentre().X, flatPlateCentre().Y + -1 * mValue, 0);
+            Point mCentrePoint = new Point(flatPlateCentre().X, flatPlateCentre().Y + mValue, 0);
             Line line = new Line(mCentrePoint, zTVector);
             GeometricPlane plane = new GeometricPlane(t4Point(), zTVector);
             Point intersectionPoint = Intersection.LineToPlane(line, plane);
