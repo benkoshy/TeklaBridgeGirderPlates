@@ -254,7 +254,7 @@ namespace ContourPlateBridge
             {
                 contourPlate.Class = "1";
             }
-            else if (Math.Abs(mValue) > 9 && Math.Abs(mValue) < 10 )
+            else if (Math.Abs(mValue) > 9 && Math.Abs(mValue) < 11 )
             {
                 contourPlate.Class = "2";
             }

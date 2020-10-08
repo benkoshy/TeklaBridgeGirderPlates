@@ -107,7 +107,8 @@ namespace ContourPlateBridge
 
         private static void AddToMReportIfRequired(PlateData plate, List<MReport> inconsistentMValues)
         {
-            if ( (plate.T4 + plate.T3) - (plate.T1 + plate.T2) > 0 )
+            double tolerancesSummed = (plate.T4 + plate.T3) - (plate.T1 + plate.T2);
+            if (tolerancesSummed > 0 )
             {
                 if (plate.M > 0)
                 {
@@ -115,7 +116,7 @@ namespace ContourPlateBridge
                 }
                 else
                 {
-                    inconsistentMValues.Add(new MReport() { MReportValue = String.Format("Bearing mark {0} has an inconsitent M value", plate.BearingMark) });
+                    inconsistentMValues.Add(new MReport() { MReportValue = String.Format("{0}, (plate.T4 + plate.T3) - (plate.T1 + plate.T2) is {1} but m-value is going the other way: m-value: {2}  ", plate.BearingMark, tolerancesSummed, plate.M) });
                 }
             }
             else
@@ -126,7 +127,7 @@ namespace ContourPlateBridge
                 }
                 else
                 {
-                    inconsistentMValues.Add(new MReport() { MReportValue = String.Format("Bearing mark {0} has an inconsitent M value", plate.BearingMark) });
+                    inconsistentMValues.Add(new MReport() { MReportValue = String.Format("{0}, (plate.T4 + plate.T3) - (plate.T1 + plate.T2) is {1} but m-value is going the other way: m-value: {2}  ", plate.BearingMark, tolerancesSummed, plate.M) });
                 }
             }
         }
