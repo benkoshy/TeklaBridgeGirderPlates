@@ -97,7 +97,10 @@ namespace ContourPlateBridge
             else
             {
                 Console.WriteLine("No inconsistent values to report");
-            }            
+            }
+
+
+            Console.WriteLine("Color code: Astronomical tolerance errors, color code: 5; HUGE tolerance errors, color code: 3. M values which are zero are color coded: 1, m values which are -10 color code: 2; The tolerance color codes override all others.");
 
             Console.ReadLine();
         }

@@ -89,14 +89,8 @@ namespace ContourPlateBridge
             contourPlate.Material.MaterialString = "250";
             contourPlate.Name = name;
             contourPlate.Position.Depth = Position.DepthEnum.FRONT;
-
-            // prefix number
-            setAssemblyPrefixAndStartNumbers();
-
-            if (mValue < 0)
-            {
-                contourPlate.Class = "3";
-            }            
+            
+            setAssemblyPrefixAndStartNumbers();      
 
             contourPlate.Insert();
 
@@ -180,7 +174,7 @@ namespace ContourPlateBridge
 
             insertFinalBoltArray(intersectionPoint);
 
-            checkIfPlanarAndColorizeAccordingly();
+            checkIfPlanarAndColorizeAccordinglyAndColorizeMIsZeroPlates();
         }
 
         private void insertFinalBoltArray(Point inclinedOrigin)
@@ -239,7 +233,10 @@ namespace ContourPlateBridge
             model.GetWorkPlaneHandler().SetCurrentTransformationPlane(currentPlane);
         }
 
-        private void checkIfPlanarAndColorizeAccordingly()
+        /// <summary>
+        /// Make sure this corresponds to the text based warning regarding the color codes.
+        /// </summary>
+        private void checkIfPlanarAndColorizeAccordinglyAndColorizeMIsZeroPlates()
         {
             Vector txAxis = getTXAxis();
             Vector tYAxis = getTYAxis();
@@ -252,6 +249,15 @@ namespace ContourPlateBridge
 
             // get the distance between the intersection point and t4
             double distanceBetweenPoints = Distance.PointToPoint(intersectionPoint, excelT2Point());
+
+            if (Math.Abs(mValue) < 0.1)
+            {
+                contourPlate.Class = "1";
+            }
+            else if (Math.Abs(mValue) > 9 && Math.Abs(mValue) < 10 )
+            {
+                contourPlate.Class = "2";
+            }
 
             if (Math.Abs(distanceBetweenPoints) >= 0.05 && Math.Abs(distanceBetweenPoints) < 10   )
             {
