@@ -27,7 +27,7 @@ namespace ContourPlateBridge
 
             if (model.GetConnectionStatus())
             {
-                using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\20200922-PLATES TO DETAIL-REV-1.csv"))
+                using (var reader = new StreamReader(@"C:\Users\Koshy\source\repos\ContourPlateBridge\20201008-BRIDGE-80-PLATES TO DETAIL.csv"))
                 using (var csv = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
                 {                    
                     csv.Configuration.RegisterClassMap<PlateDataMap>();
