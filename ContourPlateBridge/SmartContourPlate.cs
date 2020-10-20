@@ -125,7 +125,7 @@ namespace ContourPlateBridge
 
         private string midPointRoundingAwayFromZero(double tValue)
         {
-            return Math.Round(tValue, 1, MidpointRounding.AwayFromZero).ToString();
+            return Math.Round(tValue, 2, MidpointRounding.AwayFromZero).ToString();
         }
 
 
