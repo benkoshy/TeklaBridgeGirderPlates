@@ -4,12 +4,12 @@
 
 This is a code sample that:
 
-  (i) Builds contour plates, with
+  1. Builds contour plates, with
 
-  (ii) bolts
+  2. Bolts. ...with the contour plates being tapered. This required a tiny bit of linear algebra.
 
-  (iii) with the contour plates being tapered.
-  
+All the inputs are read in from a CSV file.
+
 I had to add a report which tells us if the plates are not planar. The bolts are all aligned to the plane of the plates. They need to be fairly accurate - 10 microns to be precise - according to the infinite wisdom of the Victorian Government engineer.
 
 Hopefully the code is clear enough to give you something to start with.
@@ -17,8 +17,6 @@ Hopefully the code is clear enough to give you something to start with.
 ### Demo:
 
 [![Demo of Code via Video](https://user-images.githubusercontent.com/15097447/172506873-02b15b12-cbcb-4021-b97c-5a137cc7b5ac.png)](https://vimeo.com/446339309?embedded=true&source=video_title&owner=20292870)
-
-All the inputs are read in from a CSV file.
 
 ### Warning: Gripe Alert
 
