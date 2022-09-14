@@ -21,9 +21,10 @@ Hopefully the code is clear enough to give you something to start with.
 ### Warning: Gripe Alert
 
 * We received an order to create bridge plate girders. As usual, design drawings and were poor. 
-* Government engineer wanted these plates to a tolerance of 10 microns. Yes, you read that correctly. Not sure why this type of accuracy is necessary, or even possible, given we are building a bridge. 
-* I must spent an additional 28 hours dealing with the back-and-forth rigmarole, plus dealing with gov's engineer. Was not paid for a single cent for it too.
-* Massive headache. Anyways, it's water under the Westgate bridge (pun intended). Will not be working for that guy ever again. I suppose that's the business of model of anyone invovled in building and construction in Victoria: promise payment and then don't deliver, borrow and don't repay. What could be more Australian?
+* Victorian government engineer wanted these plates to a tolerance of 10 microns. Yes, you read that correctly. 
+* Not sure why this type of accuracy is necessary, or even possible, given we are building a bridge. 
+* I must spent an additional 28 hours dealing with the back-and-forth rigmarole - plus dealing our client was a headache as well. * Massive headache. Anyways, it's water under the Westgate bridge (pun intended). Will not be working for that guy ever again. 
+* Here is the standard business model of those in the Victorian construction industry: (i) procure goods & services, and (ii) don't pay. What could be more Victorian? Add in the cost of the imbeciles in our public service, the blatant rorting + union headaches, and it's pretty easy why an infrastructure project should have a cost blow out of x5 its initial costing estimates. The poor tax payer is taken for a ride.
 
 
 
